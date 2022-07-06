@@ -1,0 +1,6 @@
+pipenv shell
+flask db upgrade
+flask seed all
+pipenv run flask run
+flask seed undo
+heroku run -a HEROKU_APP_NAME flask seed all

@@ -4,3 +4,4 @@ flask seed all
 pipenv run flask run
 flask seed undo
 heroku run -a HEROKU_APP_NAME flask seed all
+heroku run -a HEROKU_APP_NAME flask undo

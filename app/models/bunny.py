@@ -10,8 +10,8 @@ class Bunny(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     age = db.Column(db.Numeric(4,2), nullable=False)
-    gender = db.Column(db.String(6), nullable=False)
-    color = db.Column(db.String(30), nullable=False)
+    sex = db.Column(db.String(6), nullable=False)
+    breed = db.Column(db.String(50), nullable=False)
     biography = db.Column(db.Text)
     image_url = db.Column(db.Text)
     is_adoptable = db.Column(db.Boolean, default=False)
@@ -27,8 +27,8 @@ class Bunny(db.Model):
             'user_id': self.user_id,
             'name': self.name,
             'age': self.age,
-            'gender': self.gender,
-            'color': self.color,
+            'sex': self.sex,
+            'breed': self.breed,
             'image_url': self.image_url,
             'biography': self.biography,
             'is_adoptable': self.is_adoptable,

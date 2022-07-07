@@ -21,8 +21,8 @@ def seed_users():
         email='celeste@aa.io',
         image_url='https://www.ecowatch.com/wp-content/uploads/2021/10/1641264230-origin.jpg',
         biography='Curiouser and curiouser.',
-        city='Baltimore',
-        state='MD',
+        city='Pittsburgh',
+        state='PA',
         password='password')
 
     benny = User(
@@ -32,13 +32,26 @@ def seed_users():
         email='benny@aa.io',
         image_url='https://www.rollingstone.com/wp-content/uploads/2018/06/rs-14816-elton-1800-1395760049.jpg',
         biography='It\'s no use going back to yesterday because I was a different person then.',
-        city='Memphis',
-        state='TN',
+        city='Pittsburgh',
+        state='PA',
         password='password')
+
+    animal_friends = User(
+        firstname='Animal',
+        lastname='Friends',
+        username='animal_friends',
+        email='animal@aa.io',
+        image_url='https://user-content.givegab.com/uploads/group/logo/446550/a64a79859fad475cedd2ee9fc0f638730b5dd27f.png',
+        biography='Our Mission Statement: To rescue, rehabilitate and rehome animals in crisis, ensure healthy pets through education, advocacy and affordable services, and inspire a community where the animal-human bond is celebrated and nurtured.',
+        city='Pittsburgh',
+        state='PA',
+        password='password'
+    )
 
     db.session.add(demo)
     db.session.add(celeste)
     db.session.add(benny)
+    db.session.add(animal_friends)
 
     db.session.commit()
 

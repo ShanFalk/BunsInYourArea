@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
+from sqlalchemy.orm import validates
 
 
 class User(db.Model, UserMixin):
@@ -19,6 +20,8 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(30), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
+
+    bunnies = db.relationship("Bunny", back_populates="user")
 
     @property
     def password(self):

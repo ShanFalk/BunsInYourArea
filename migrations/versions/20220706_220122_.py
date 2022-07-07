@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
-    sa.Column('age', sa.Numeric(precision=4, scale=2), nullable=False),
+    sa.Column('age', sa.Float(), nullable=False),
     sa.Column('gender', sa.String(length=6), nullable=False),
     sa.Column('color', sa.String(length=30), nullable=False),
     sa.Column('biography', sa.Text(), nullable=True),

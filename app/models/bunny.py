@@ -9,7 +9,7 @@ class Bunny(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(255), nullable=False)
-    age = db.Column(db.Numeric(4,2), nullable=False)
+    age = db.Column(db.Float, nullable=False)
     sex = db.Column(db.String(6), nullable=False)
     breed = db.Column(db.String(50), nullable=False)
     biography = db.Column(db.Text)

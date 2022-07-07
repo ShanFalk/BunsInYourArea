@@ -1,4 +1,3 @@
-from sqlalchemy import ForeignKey
 from .db import db
 from datetime import datetime
 from sqlalchemy.orm import validates
@@ -8,7 +7,7 @@ class Bunny(db.Model):
     __tablename__ = 'bunnies'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     age = db.Column(db.Numeric(4,2), nullable=False)
     gender = db.Column(db.String(6), nullable=False)
@@ -20,6 +19,7 @@ class Bunny(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
     user = db.relationship("User", back_populates="bunnies")
+    likes = db.relationship("Like", back_populates="bunny")
 
     def to_dict(self):
         return {

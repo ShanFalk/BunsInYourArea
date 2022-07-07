@@ -22,6 +22,9 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
     bunnies = db.relationship("Bunny", back_populates="user")
+    reviewer_user = db.relationship("Review", foreign_keys="Review.reviewer_id", back_populates="reviewer", lazy="dynamic")
+    reviewee_user = db.relationship("Review", foreign_keys="Review.reviewee_id", back_populates="reviewee", lazy="dynamic")
+    likes = db.relationship("Like", back_populates="user")
 
     @property
     def password(self):

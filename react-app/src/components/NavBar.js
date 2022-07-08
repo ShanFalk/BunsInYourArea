@@ -26,11 +26,13 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li>
+        {sessionUser && (
         <li>
           <NavLink to={`/profile/${sessionUser.id}`} exact={true} activeClassName='active'>
             Profile
           </NavLink>
         </li>
+        )}
         <li>
           <LogoutButton />
         </li>

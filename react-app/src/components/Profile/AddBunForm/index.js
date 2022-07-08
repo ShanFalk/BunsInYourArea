@@ -11,6 +11,15 @@ function AddBunny() {
     const [imgUrl, setImgUrl] = useState(null);
     const [isAdoptable, setIsAdoptable] = useState(false);
 
+    const updateName = (e) => setName(e.target.value);
+    const updateAge = (e) => setAge(e.target.value);
+    const updateSex = (e) => setSex(e.target.value);
+    const updateBreed = (e) => setBreed(e.target.value);
+    const updateBio = (e) => setBio(e.target.value);
+    const updateImage = (e) => setImgUrl(e.target.files[0]);
+    const updateAdoptable = (e) => setIsAdoptable(e.target.value);
+
+
     const sessionUser = useSelector(state => state.session.user);
 
     return (
@@ -42,9 +51,9 @@ function AddBunny() {
                 />
                 <label htmlFor="sex">Sex</label>
                 <select name="sex" onSelect={updateSex}>
-                    <option value="" disabled>--Please choose an option--</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
+                    <option value="" selected>--Please choose an option--</option>
+                    <option selected={sex === "Female"} value="Female">Female</option>
+                    <option selected={sex === "Male"} value="Male">Male</option>
                 </select>
                 <label htmlFor="breed">Breed</label>
                 <input
@@ -64,6 +73,7 @@ function AddBunny() {
                 <input
                     type="file"
                     name="image"
+                    value={imgUrl}
                     required
                     accept="image/*"
                     onChange={updateImage}
@@ -74,6 +84,7 @@ function AddBunny() {
                         name="adoptableNo"
                         value={false}
                         onClick={updateAdoptable}
+                        checked={isAdoptable === false}
                     />
                     <label htmlFor="adoptableNo">No</label>
                     <input
@@ -81,6 +92,7 @@ function AddBunny() {
                         name="adoptableYes"
                         value={true}
                         onClick={updateAdoptable}
+                        checked={isAdoptable === true}
                     />
                     <label htmlFor="adoptableYes">Yes</label>
                 <button>Submit</button>

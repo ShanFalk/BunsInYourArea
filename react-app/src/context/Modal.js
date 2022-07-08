@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef,useEffect } from "react";
-import { ReactDOM } from "react-dom";
+import  ReactDOM  from "react-dom";
 import './Modal.css';
 
 const ModalContext = React.createContext();
@@ -24,7 +24,7 @@ export function ModalProvider({ children }) {
     )
 }
 
-function Modal({onClose, children}) {
+export function Modal({onClose, children}) {
     const modalNode = useContext(ModalContext);
     if (!modalNode) return null;
     return ReactDOM.createPortal(

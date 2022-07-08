@@ -54,6 +54,9 @@ function App() {
           <h1>My Profile</h1>
           <Profile />
         </ProtectedRoute>
+        <ProtectedRoute path='/profile/:bunId' exact={true}>
+          <h1>New Bunny</h1>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

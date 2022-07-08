@@ -11,6 +11,7 @@ import BunniesList from './components/Home';
 import Profile from './components/Profile';
 import { authenticate } from './store/session';
 import { getAllBunnies } from './store/bunny';
+import Bunny from './components/Bunny';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -53,6 +54,10 @@ function App() {
         <ProtectedRoute path='/profile/:userId' exact={true}>
           <h1>My Profile</h1>
           <Profile />
+        </ProtectedRoute>
+        <ProtectedRoute path='/bunnies/:bunId' exact={true}>
+          <h1>New Bunny</h1>
+          <Bunny />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

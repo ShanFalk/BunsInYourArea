@@ -14,7 +14,7 @@ function Profile() {
             <button onClick={openModal}>Add a Bunny</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AddBunny />
+                    <AddBunny setShowModal={setShowModal}/>
                 </Modal>
             )}
         </div>

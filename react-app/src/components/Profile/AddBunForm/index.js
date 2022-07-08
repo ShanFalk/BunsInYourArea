@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { createBunny } from "../../../store/bunny";
 
 function AddBunny() {
     const [errors, setErrors] = useState([]);
@@ -19,13 +21,38 @@ function AddBunny() {
     const updateImage = (e) => setImgUrl(e.target.files[0]);
     const updateAdoptable = (e) => setIsAdoptable(e.target.value);
 
-
+    const dispatch = useDispatch()
+    const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            user_id: sessionUser.id,
+            name,
+            age,
+            sex,
+            breed,
+            biography: bio,
+            image_url: imgUrl,
+            is_adoptable: isAdoptable
+        }
+
+        let createdBunny = await dispatch(createBunny(payload)).catch(async(res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+        });
+
+        if (createdBunny) {
+            history.push(`/bunnies/${createdBunny.id}`)
+        }
+    }
 
     return (
         <div>
             <h2>Add a New Bunny</h2>
-            <form>
+            <form onSubmit={onSubmit}>
                 {errors.length > 0 && <ul className='errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
@@ -50,10 +77,10 @@ function AddBunny() {
                     onChange={updateAge}
                 />
                 <label htmlFor="sex">Sex</label>
-                <select name="sex" onSelect={updateSex}>
+                <select name="sex" onChange={updateSex} value={sex}>
                     <option value="" selected>--Please choose an option--</option>
-                    <option selected={sex === "Female"} value="Female">Female</option>
-                    <option selected={sex === "Male"} value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                 </select>
                 <label htmlFor="breed">Breed</label>
                 <input
@@ -73,7 +100,6 @@ function AddBunny() {
                 <input
                     type="file"
                     name="image"
-                    value={imgUrl}
                     required
                     accept="image/*"
                     onChange={updateImage}
@@ -81,18 +107,17 @@ function AddBunny() {
                 <legend>Adoptable?</legend>
                     <input
                         type="radio"
-                        name="adoptableNo"
+                        name="adoptable"
                         value={false}
                         onClick={updateAdoptable}
-                        checked={isAdoptable === false}
+                        required
                     />
                     <label htmlFor="adoptableNo">No</label>
                     <input
                         type="radio"
-                        name="adoptableYes"
+                        name="adoptable"
                         value={true}
                         onClick={updateAdoptable}
-                        checked={isAdoptable === true}
                     />
                     <label htmlFor="adoptableYes">Yes</label>
                 <button>Submit</button>

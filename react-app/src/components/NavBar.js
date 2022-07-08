@@ -1,9 +1,13 @@
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
+
+  const sessionUser = useSelector(state => state.session.user)
+
   return (
     <nav>
       <ul>
@@ -22,11 +26,13 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li>
+        {sessionUser && (
         <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
+          <NavLink to={`/profile/${sessionUser.id}`} exact={true} activeClassName='active'>
+            Profile
           </NavLink>
         </li>
+        )}
         <li>
           <LogoutButton />
         </li>

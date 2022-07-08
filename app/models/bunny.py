@@ -21,8 +21,8 @@ class Bunny(db.Model):
     user = db.relationship("User", back_populates="bunnies")
     likes = db.relationship("Like", back_populates="bunny")
 
-    def to_dict(self):
-        return {
+    def to_dict(self, **kwargs):
+        out = {
             'id': self.id,
             'user_id': self.user_id,
             'name': self.name,
@@ -34,9 +34,13 @@ class Bunny(db.Model):
             'is_adoptable': self.is_adoptable,
             'created_at':self.created_at,
         }
+        for key, collection in kwargs.items():
+            out[key] = collection.to_dict()
+
+        return out
 
     @validates('name')
     def validate_name(self, key, name):
         if len(name) <= 2:
-            raise ValueError('name is too short')
+            raise ValueError('Name is too short')
         return name

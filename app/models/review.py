@@ -16,8 +16,8 @@ class Review(db.Model):
     reviewer = db.relationship("User", foreign_keys=[reviewer_id], back_populates="reviewer_user")
     reviewee = db.relationship("User", foreign_keys=[reviewee_id], back_populates="reviewee_user")
 
-    def to_dict(self):
-        return {
+    def to_dict(self, **kwargs):
+        out = {
             "id": self.id,
             "reviewer_id": self.reviewer_id,
             "reviewee_id": self.reviewee_id,
@@ -26,6 +26,11 @@ class Review(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
+
+        for key, collection in kwargs.items():
+                out[key] = collection.to_dict()
+
+        return out
 
     @validates('rating')
     def validate_rating(self, key, rating):

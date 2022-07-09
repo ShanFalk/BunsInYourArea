@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import AddBunny from './AddBunForm';
+import Reviews from './Reviews';
 
 function Profile() {
     const [showModal, setShowModal] = useState(false);
@@ -17,6 +18,7 @@ function Profile() {
                     <AddBunny setShowModal={setShowModal}/>
                 </Modal>
             )}
+            <Reviews />
         </div>
     )
 }

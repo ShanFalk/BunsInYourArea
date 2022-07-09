@@ -11,6 +11,7 @@ import BunniesList from './components/Home';
 import Profile from './components/Profile';
 import { authenticate } from './store/session';
 import { getAllBunnies } from './store/bunny';
+import { getReviews } from './store/review';
 import Bunny from './components/Bunny';
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -25,6 +26,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllBunnies())
+    dispatch(getReviews())
   }, [dispatch])
 
   if (!loaded) {

@@ -6,6 +6,7 @@ function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
     const sessionUser = useSelector(state => state.session.user)
     const bunnies = Object.values(bunnyState)
+    bunnies.map((bunny) => console.log(bunny.image_url))
 
     return (
         <div>

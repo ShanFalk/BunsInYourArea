@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
@@ -11,13 +12,15 @@ function BunniesList() {
             <h2>Bunnies near {sessionUser.city}, {sessionUser.state}</h2>
             {bunnies.map((bunny) => {
                 return (
-                    <div key={bunny.id}>
+                    <Link key={bunny.id} to={`/bunnies/${bunny.id}`}>
+                    <div >
                         <ul>
                             <li><img alt='a cute bunny' src={bunny.image_url}/></li>
                             <li>{bunny.name}</li>
                             <li>{bunny.breed}</li>
                         </ul>
                     </div>
+                    </Link>
                 )
             })}
         </div>

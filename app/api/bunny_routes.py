@@ -69,5 +69,12 @@ def updateBunny():
 
         bunny = Bunny.query.options(joinedload('user')).get(bunny.id)
         return bunny.to_dict(user=bunny.user)
-    print('*'*50, form.errors)
     return {'errors': format_errors(form.errors)}, 401
+
+@login_required
+@bunny_routes.route("/<int:id>", methods=["DELETE"])
+def delete_bunny(id):
+    bunny = Bunny.query.get(id)
+    db.session.delete(bunny)
+    db.session.commit()
+    return {'Successful': 'Successful'}

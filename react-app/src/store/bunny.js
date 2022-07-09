@@ -1,5 +1,6 @@
 const GET_BUNNIES = 'bunny/GET_BUNNIES';
 const POST_BUNNY = 'bunny/POST_BUNNY';
+const DELETE_BUNNY = 'bunny/DELETE_BUNNY';
 
 const retrieveAll = (bunnies) => ({
     type: GET_BUNNIES,
@@ -10,6 +11,25 @@ const createOne = (bunny) => ({
     type: POST_BUNNY,
     bunny
 })
+
+const removeOne = (bunId) => ({
+    type: DELETE_BUNNY,
+    bunId
+})
+
+export const deleteBunny = (bunId) => async (dispatch) => {
+    const response = await fetch(`/api/bunnies/${bunId}`, {
+        method: "DELETE"
+    })
+    if (response.ok) {
+        const data = await response.json()
+        if(data.errors){
+            return;
+        }
+        if(data.Successful) dispatch(removeOne(bunId));
+        return data;
+    }
+}
 
 export const updateBunny = (payload) => async  (dispatch) => {
     const {
@@ -111,6 +131,10 @@ export default function bunnyReducer(state = initialState, action) {
             return { ...state, ...bunnies }
         case POST_BUNNY:
             return {...state, [action.bunny.id] : action.bunny}
+        case DELETE_BUNNY:
+            let newState = {...state}
+            delete newState[action.bunId]
+            return newState
         default:
             return state;
     }

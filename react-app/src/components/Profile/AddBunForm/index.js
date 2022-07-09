@@ -77,8 +77,7 @@ function AddBunny() {
                     onChange={updateAge}
                 />
                 <label htmlFor="sex">Sex</label>
-                <select name="sex" onChange={updateSex} value={sex}>
-                    <option value="" selected>--Please choose an option--</option>
+                <select name="sex" onChange={updateSex} value={sex} required>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>

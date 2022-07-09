@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {updateBunny} from "../../../store/bunny";
+import {updateBunny, deleteBunny} from "../../../store/bunny";
 
 function EditBunny( { bunny, endEdit }) {
     const [errors, setErrors] = useState([]);
@@ -52,6 +52,14 @@ function EditBunny( { bunny, endEdit }) {
         }
     }
 
+    const handleDelete = async (e) => {
+        // e.preventDefault();
+        await dispatch(deleteBunny(bunny.id))
+        .then(
+            history.push("/home")
+        )
+    }
+
     return (
         <div>
             <h2>Update {bunny.name}</h2>
@@ -80,7 +88,7 @@ function EditBunny( { bunny, endEdit }) {
                     onChange={updateAge}
                 />
                 <label htmlFor="sex">Sex</label>
-                <select name="sex" onChange={updateSex} value={sex}>
+                <select name="sex" onChange={updateSex} value={sex} required>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>
@@ -126,6 +134,7 @@ function EditBunny( { bunny, endEdit }) {
                 <button>Update</button>
             </form>
             <button onClick={() => endEdit()}>Cancel</button>
+            <button onClick={handleDelete}>Delete</button>
         </div>
     )
 }

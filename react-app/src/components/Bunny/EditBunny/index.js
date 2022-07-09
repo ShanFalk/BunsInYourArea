@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createBunny } from "../../../store/bunny";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {updateBunny, deleteBunny} from "../../../store/bunny";
 
-function AddBunny() {
+function EditBunny( { bunny, endEdit }) {
     const [errors, setErrors] = useState([]);
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [sex, setSex] = useState("");
-    const [breed, setBreed] = useState("");
-    const [bio, setBio] = useState("");
-    const [imgUrl, setImgUrl] = useState(null);
-    const [isAdoptable, setIsAdoptable] = useState(false);
+    const [name, setName] = useState(bunny?.name);
+    const [age, setAge] = useState(bunny?.age);
+    const [sex, setSex] = useState(bunny?.sex);
+    const [breed, setBreed] = useState(bunny?.breed);
+    const [bio, setBio] = useState(bunny?.biography);
+    const [imgUrl, setImgUrl] = useState(bunny?.image_url);
+    const [isAdoptable, setIsAdoptable] = useState(bunny?.is_adoptable);
+    console.log(typeof isAdoptable)
 
     const updateName = (e) => setName(e.target.value);
     const updateAge = (e) => setAge(e.target.value);
@@ -19,7 +20,7 @@ function AddBunny() {
     const updateBreed = (e) => setBreed(e.target.value);
     const updateBio = (e) => setBio(e.target.value);
     const updateImage = (e) => setImgUrl(e.target.files[0]);
-    const updateAdoptable = (e) => setIsAdoptable(e.target.value);
+    const updateAdoptable = (e) => setIsAdoptable(e.target.value.toLowerCase() === 'true');
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -29,6 +30,7 @@ function AddBunny() {
         e.preventDefault();
 
         const payload = {
+            id: bunny.id,
             user_id: sessionUser.id,
             name,
             age,
@@ -39,19 +41,28 @@ function AddBunny() {
             is_adoptable: isAdoptable
         }
 
-        let createdBunny = await dispatch(createBunny(payload)).catch(async(res) => {
+        let updatedBunny = await dispatch(updateBunny(payload)).catch(async(res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
         });
 
-        if (createdBunny) {
-            history.push(`/bunnies/${createdBunny.id}`)
+        if (updatedBunny) {
+            endEdit()
+            history.push(`/bunnies/${updatedBunny.id}`)
         }
+    }
+
+    const handleDelete = async (e) => {
+        // e.preventDefault();
+        await dispatch(deleteBunny(bunny.id))
+        .then(
+            history.push("/home")
+        )
     }
 
     return (
         <div>
-            <h2>Add a New Bunny</h2>
+            <h2>Update {bunny.name}</h2>
             <form onSubmit={onSubmit}>
                 {errors.length > 0 && <ul className='errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -99,7 +110,6 @@ function AddBunny() {
                 <input
                     type="file"
                     name="image"
-                    required
                     accept="image/*"
                     onChange={updateImage}
                 />
@@ -109,6 +119,7 @@ function AddBunny() {
                         name="adoptable"
                         value={false}
                         onClick={updateAdoptable}
+                        defaultChecked={!isAdoptable}
                         required
                     />
                     <label htmlFor="adoptableNo">No</label>
@@ -117,12 +128,15 @@ function AddBunny() {
                         name="adoptable"
                         value={true}
                         onClick={updateAdoptable}
+                        defaultChecked={isAdoptable}
                     />
                     <label htmlFor="adoptableYes">Yes</label>
-                <button>Submit</button>
+                <button>Update</button>
             </form>
+            <button onClick={() => endEdit()}>Cancel</button>
+            <button onClick={handleDelete}>Delete</button>
         </div>
     )
 }
 
-export default AddBunny;
+export default EditBunny;

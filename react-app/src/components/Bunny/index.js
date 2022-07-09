@@ -9,23 +9,27 @@ function Bunny() {
     const sessionUser = useSelector(state => state.session.user);
     const [isEditing, setIsEditing] = useState(false);
 
+    const onEditEnd = () => {
+        setIsEditing(false);
+    }
+
     return (
         <div>
             {!isEditing && (
             <div>
                 <ul>
-                    <li><img alt='An adorable bunny' src={bunny.image_url}/></li>
+                    <li><img alt='An adorable bunny' src={bunny?.image_url}/></li>
                     <li>{bunny?.name}</li>
                     <li>{bunny?.biography}</li>
                     <li>{bunny?.breed}</li>
                     <li>{bunny?.sex}</li>
                     <li>{bunny?.age}</li>
-                    {sessionUser.id === bunny.user_id && <button>Edit</button>}
+                    {sessionUser.id === bunny?.user_id && <button onClick={() => setIsEditing(true)}>Edit</button>}
                 </ul>
             </div>
             )}
             {isEditing && (
-                <EditBunny bunny={bunny}/>
+                <EditBunny bunny={bunny} endEdit={onEditEnd}/>
             )}
         </div>
     )

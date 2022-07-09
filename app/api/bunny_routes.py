@@ -47,7 +47,7 @@ def updateBunny():
 
     image_url = None
 
-    if request.files["image_url"]:
+    if "image_url" in request.files.keys():
         image = request.files["image_url"]
         image_url = upload(image)
 
@@ -69,4 +69,5 @@ def updateBunny():
 
         bunny = Bunny.query.options(joinedload('user')).get(bunny.id)
         return bunny.to_dict(user=bunny.user)
+    print('*'*50, form.errors)
     return {'errors': format_errors(form.errors)}, 401

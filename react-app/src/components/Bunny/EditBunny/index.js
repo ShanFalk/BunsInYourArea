@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateBunny} from "../../../store/bunny";
 
-function EditBunny( { bunny }) {
+function EditBunny( { bunny, endEdit }) {
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState(bunny?.name);
     const [age, setAge] = useState(bunny?.age);
@@ -12,6 +12,7 @@ function EditBunny( { bunny }) {
     const [bio, setBio] = useState(bunny?.biography);
     const [imgUrl, setImgUrl] = useState(bunny?.image_url);
     const [isAdoptable, setIsAdoptable] = useState(bunny?.is_adoptable);
+    console.log(typeof isAdoptable)
 
     const updateName = (e) => setName(e.target.value);
     const updateAge = (e) => setAge(e.target.value);
@@ -19,7 +20,7 @@ function EditBunny( { bunny }) {
     const updateBreed = (e) => setBreed(e.target.value);
     const updateBio = (e) => setBio(e.target.value);
     const updateImage = (e) => setImgUrl(e.target.files[0]);
-    const updateAdoptable = (e) => setIsAdoptable(e.target.value);
+    const updateAdoptable = (e) => setIsAdoptable(e.target.value.toLowerCase() === 'true');
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -46,6 +47,7 @@ function EditBunny( { bunny }) {
         });
 
         if (updatedBunny) {
+            endEdit()
             history.push(`/bunnies/${updatedBunny.id}`)
         }
     }
@@ -79,7 +81,6 @@ function EditBunny( { bunny }) {
                 />
                 <label htmlFor="sex">Sex</label>
                 <select name="sex" onChange={updateSex} value={sex}>
-                    <option value="" selected>--Please choose an option--</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>
@@ -101,7 +102,6 @@ function EditBunny( { bunny }) {
                 <input
                     type="file"
                     name="image"
-                    required
                     accept="image/*"
                     onChange={updateImage}
                 />
@@ -111,6 +111,7 @@ function EditBunny( { bunny }) {
                         name="adoptable"
                         value={false}
                         onClick={updateAdoptable}
+                        defaultChecked={!isAdoptable}
                         required
                     />
                     <label htmlFor="adoptableNo">No</label>
@@ -119,10 +120,12 @@ function EditBunny( { bunny }) {
                         name="adoptable"
                         value={true}
                         onClick={updateAdoptable}
+                        defaultChecked={isAdoptable}
                     />
                     <label htmlFor="adoptableYes">Yes</label>
                 <button>Update</button>
             </form>
+            <button onClick={() => endEdit()}>Cancel</button>
         </div>
     )
 }

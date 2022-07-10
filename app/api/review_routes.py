@@ -1,7 +1,8 @@
 from crypt import methods
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import Review, db
+from app.forms.review_form import UpdateReview
+from app.models import Review, db, review
 from sqlalchemy.orm import joinedload
 from app.forms import CreateReview
 from app.utils import format_errors
@@ -31,5 +32,23 @@ def create_review():
         db.session.commit()
 
         review = Review.query.options(joinedload('reviewer')).get(new_review.id)
+        return review.to_dict(reviewer=review.reviewer)
+    return {'errors': format_errors(form.errors)}, 401
+
+@login_required
+@review_routes.route("",methods=["PUT"])
+def updateReview():
+
+    form = UpdateReview()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        review = Review.query.get(form.data["id"])
+        review.rating = form.data['rating']
+        review.content = form.data['content']
+
+        db.session.commit()
+
+        review = Review.query.options(joinedload('reviewer')).get(review.id)
         return review.to_dict(reviewer=review.reviewer)
     return {'errors': format_errors(form.errors)}, 401

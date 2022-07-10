@@ -21,11 +21,23 @@ export const createReview = (payload) => async (dispatch) => {
         } = payload
 
     const form = new FormData();
-    form.append()
+    form.append('reviewer_id', reviewer_id)
+    form.append('reviewee_id', reviewee_id)
+    form.append('rating', rating)
+    form.append('content', content)
 
     const response = await fetch('/api/reviews', {
-
-    })
+        method: 'POST',
+        body: form
+    });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(createOne(data));
+        return data
+    }
 }
 
 export const getReviews = () => async (dispatch) => {
@@ -48,6 +60,8 @@ export default function reviewReducer(state = initialState, action) {
         case GET_REVIEWS:
             const reviews = action.reviews
             return {...state, ...reviews}
+        case POST_REVIEW:
+            return {...state, [action.review.id]: action.review}
         default:
             return state;
     }

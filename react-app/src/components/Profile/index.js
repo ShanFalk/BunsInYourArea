@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import AddBunny from './AddBunForm';
+import AddBunny from './AddBun';
 import Reviews from './Reviews';
-import ReviewForm from './AddReviewForm';
+import ReviewForm from './AddReview';
 
 function Profile() {
     const [showModal, setShowModal] = useState(false);

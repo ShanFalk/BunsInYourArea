@@ -11,6 +11,37 @@ const createOne = (review) => ({
     review
 });
 
+export const updateReview = (payload) => async (dispatch) => {
+    const {
+        id,
+        reviewer_id,
+        reviewee_id,
+        rating,
+        content
+    } = payload
+
+    const form = new FormData();
+    form.append('id', id)
+    form.append('reviewer_id', reviewer_id)
+    form.append('reviewee_id', reviewee_id)
+    form.append('rating', rating)
+    form.append('content', content)
+
+    const response = await fetch('/api/reviews', {
+        method: 'PUT',
+        body: form
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(createOne(data));
+        return data
+    }
+}
+
 export const createReview = (payload) => async (dispatch) => {
     const {
         reviewer_id,

@@ -7,3 +7,10 @@ class CreateReview(FlaskForm):
     reviewee_id = IntegerField('reviewee_id', validators=[DataRequired()])
     rating = IntegerField('rating', validators=[DataRequired(message="You must give a rating")])
     content = TextAreaField('content', validators=[DataRequired(message="You must write something")])
+
+class UpdateReview(FlaskForm):
+    id = IntegerField("id")
+    reviewer_id = IntegerField('reviewer_id', validators=[DataRequired()])
+    reviewee_id = IntegerField('reviewee_id', validators=[DataRequired()])
+    rating = IntegerField('rating', validators=[DataRequired(message="You must give a rating")])
+    content = TextAreaField('content', validators=[DataRequired(message="You must write something")])

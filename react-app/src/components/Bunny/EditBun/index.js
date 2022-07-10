@@ -52,8 +52,7 @@ function EditBunny( { bunny, endEdit }) {
         }
     }
 
-    const handleDelete = async (e) => {
-        // e.preventDefault();
+    const handleDelete = async () => {
         await dispatch(deleteBunny(bunny.id))
         .then(
             history.push("/home")

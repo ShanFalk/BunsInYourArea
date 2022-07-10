@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import EditBunny from './EditBunny';
+import EditBunny from './EditBun';
 
 function Bunny() {
     const { bunId } = useParams();

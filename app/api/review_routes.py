@@ -52,3 +52,11 @@ def updateReview():
         review = Review.query.options(joinedload('reviewer')).get(review.id)
         return review.to_dict(reviewer=review.reviewer)
     return {'errors': format_errors(form.errors)}, 401
+
+@login_required
+@review_routes.route("/<int:id>", methods=["DELETE"])
+def delete_review(id):
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.session.commit()
+    return {'Successful': 'Successful'}

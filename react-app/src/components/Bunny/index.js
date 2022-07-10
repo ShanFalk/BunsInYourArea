@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import EditBunny from './EditBunny';
 
@@ -24,6 +24,7 @@ function Bunny() {
                     <li>{bunny?.breed}</li>
                     <li>{bunny?.sex}</li>
                     <li>{bunny?.age}</li>
+                    <li>Organization: <Link to={`/profile/${bunny?.user.id}`}>{bunny?.user.username}</Link></li>
                     {sessionUser.id === bunny?.user_id && <button onClick={() => setIsEditing(true)}>Edit</button>}
                 </ul>
             </div>

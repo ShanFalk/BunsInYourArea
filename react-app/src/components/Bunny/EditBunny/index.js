@@ -12,7 +12,7 @@ function EditBunny( { bunny, endEdit }) {
     const [bio, setBio] = useState(bunny?.biography);
     const [imgUrl, setImgUrl] = useState(bunny?.image_url);
     const [isAdoptable, setIsAdoptable] = useState(bunny?.is_adoptable);
-    console.log(typeof isAdoptable)
+
 
     const updateName = (e) => setName(e.target.value);
     const updateAge = (e) => setAge(e.target.value);

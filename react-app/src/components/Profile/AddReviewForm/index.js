@@ -18,7 +18,6 @@ function ReviewForm() {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-
         const payload = {
             reviewer_id: sessionUser.id,
             reviewee_id: revieweeId,
@@ -32,10 +31,10 @@ function ReviewForm() {
                 if (data && data.errors) setErrors(data.errors);
             }));
 
-
-        // if (createdReview) {
-        //     history.push
-        // }
+        if (createdReview) {
+            setRating('')
+            setContent('')
+        }
 
     }
 
@@ -43,6 +42,9 @@ function ReviewForm() {
         <div>
             <h2>Leave a Review</h2>
             <form onSubmit={onSubmit}>
+            {errors.length > 0 && <ul className='errors'>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>}
                 <label htmlFor="rating">Rating</label>
                 <input
                     type="number"

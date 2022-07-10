@@ -1,5 +1,5 @@
 const GET_REVIEWS = 'review/GET_REVIEWS';
-const POST_REVIEW = 'review/GET_REVIEWS';
+const POST_REVIEW = 'review/POST_REVIEW';
 
 const retrieveAll = (reviews) => ({
     type: GET_REVIEWS,
@@ -12,7 +12,6 @@ const createOne = (review) => ({
 });
 
 export const createReview = (payload) => async (dispatch) => {
-
     const {
         reviewer_id,
         reviewee_id,
@@ -30,11 +29,13 @@ export const createReview = (payload) => async (dispatch) => {
         method: 'POST',
         body: form
     });
+
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
             return;
         }
+
         dispatch(createOne(data));
         return data
     }

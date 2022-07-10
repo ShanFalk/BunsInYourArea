@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
 from app.models import Review, db
@@ -13,7 +14,7 @@ def user_reviews():
     return {review.id: review.to_dict(reviewer=review.reviewer) for review in reviews}
 
 @login_required
-@review_routes.route('')
+@review_routes.route('', methods=["POST"])
 def create_review():
 
     form = CreateReview()

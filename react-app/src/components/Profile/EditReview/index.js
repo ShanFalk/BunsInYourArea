@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import { updateReview } from "../../../store/review";
+import { updateReview, deleteReview } from "../../../store/review";
 
 function EditReview({ review, setShowModal }) {
     const [rating, setRating] = useState(review.rating);
@@ -33,6 +33,13 @@ function EditReview({ review, setShowModal }) {
         }
     }
 
+    const handleDelete = async () => {
+        await dispatch(deleteReview(review.id))
+        .then(
+            setShowModal(false)
+        )
+    }
+
     return (
         <div>
             <h2>Edit Review</h2>
@@ -59,6 +66,7 @@ function EditReview({ review, setShowModal }) {
                 />
                 <button>Submit</button>
             </form>
+                <button onClick={handleDelete}>Delete</button>
         </div>
     )
 }

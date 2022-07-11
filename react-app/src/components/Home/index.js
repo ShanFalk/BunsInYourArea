@@ -17,10 +17,14 @@ function BunniesList() {
 
     },[dispatch])
 
+    const localBunnies = bunnies.filter((bunny) => {
+        return  sessionUser.city === bunny.user.city && sessionUser.state === bunny.user.state;
+    })
+
     return (
         <div>
             <h2>Bunnies near {sessionUser.city}, {sessionUser.state}</h2>
-            {bunnies.map((bunny) => {
+            {localBunnies.map((bunny) => {
                 return (
                     <div key={bunny.id} >
                         <Link to={`/bunnies/${bunny.id}`}>

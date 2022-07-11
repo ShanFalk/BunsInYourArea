@@ -26,7 +26,6 @@ export const unlike = (likeId) => async (dispatch) => {
         if(data.errors){
           return;
         }
-        console.log('THIS IS THE DATA', data)
         dispatch(removeOne(data))
     }
 }

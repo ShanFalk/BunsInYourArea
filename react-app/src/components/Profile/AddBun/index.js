@@ -38,7 +38,7 @@ function AddBunny() {
             image_url: imgUrl,
             is_adoptable: isAdoptable
         }
-        console.log(payload)
+
         let createdBunny = await dispatch(createBunny(payload)).catch(async(res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);

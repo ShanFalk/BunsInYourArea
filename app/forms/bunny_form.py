@@ -10,7 +10,7 @@ class CreateBunny(FlaskForm):
     sex = StringField('sex', validators=[DataRequired()])
     breed = StringField('breed', validators=[DataRequired()])
     biography = TextAreaField('biography', validators=[DataRequired()])
-    is_adoptable = BooleanField('is_adoptable', validators=[DataRequired()])
+    is_adoptable = BooleanField('is_adoptable')
 
 class UpdateBunny(FlaskForm):
 

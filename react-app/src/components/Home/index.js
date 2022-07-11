@@ -14,16 +14,16 @@ function BunniesList() {
             <h2>Bunnies near {sessionUser.city}, {sessionUser.state}</h2>
             {bunnies.map((bunny) => {
                 return (
-                    <Link key={bunny.id} to={`/bunnies/${bunny.id}`}>
-                    <div >
+                    <div key={bunny.id} >
+                        <Link to={`/bunnies/${bunny.id}`}>
                         <ul>
                             <li><img alt='a cute bunny' src={bunny.image_url}/></li>
                             <li>{bunny.name}</li>
                             <li>{bunny.breed}</li>
                         </ul>
-                        <LikesButton bunny={bunny} sessionUser={sessionUser}/>
-                    </div>
                     </Link>
+                    <LikesButton bunny={bunny} sessionUser={sessionUser}/>
+                    </div>
                 )
             })}
         </div>

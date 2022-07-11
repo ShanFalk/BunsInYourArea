@@ -19,7 +19,7 @@ function AddBunny() {
     const updateBreed = (e) => setBreed(e.target.value);
     const updateBio = (e) => setBio(e.target.value);
     const updateImage = (e) => setImgUrl(e.target.files[0]);
-    const updateAdoptable = (e) => setIsAdoptable(e.target.value);
+    const updateAdoptable = (e) => setIsAdoptable(e.target.value.toLowerCase() === 'true');
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -38,7 +38,7 @@ function AddBunny() {
             image_url: imgUrl,
             is_adoptable: isAdoptable
         }
-
+        console.log(payload)
         let createdBunny = await dispatch(createBunny(payload)).catch(async(res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
@@ -78,6 +78,7 @@ function AddBunny() {
                 />
                 <label htmlFor="sex">Sex</label>
                 <select name="sex" onChange={updateSex} value={sex} required>
+                    <option value="" disabled selected>--Please choose an option--</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>

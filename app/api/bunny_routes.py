@@ -38,7 +38,7 @@ def add_bunny():
 
         bunny = Bunny.query.options(joinedload('user')).get(new_bunny.id)
         return bunny.to_dict(user=bunny.user)
-    print({'errors': form.errors})
+
     return {'errors': form.errors}, 401
 
 @login_required

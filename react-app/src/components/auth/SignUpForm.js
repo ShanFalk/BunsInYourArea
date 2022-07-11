@@ -5,6 +5,12 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [imgUrl, setImgUrl] = useState(null);
+  const [bio, setBio] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +27,13 @@ const SignUpForm = () => {
       }
     }
   };
+
+  const updateFirstName = (e) => setFirstName(e.target.value);
+  const updateLastName = (e) => setLastName(e.target.value);
+  const updateCity = (e) => setCity(e.target.value);
+  const updateState = (e) => setState(e.target.value);
+  const updateImage = (e) => setImgUrl(e.target.value);
+  const updateBio = (e) => setBio(e.target.value);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -50,6 +63,82 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
+        <label htmlFor='firstname'>First Name</label>
+        <input
+          type='text'
+          name='firstname'
+          value={firstname}
+          onChange={updateFirstName}/>
+        <label htmlFor='lastname'>Last Name</label>
+        <input
+          type='text'
+          name='lasttname'
+          value={lastname}
+          onChange={updateLastName}/>
+        <label htmlFor='city'>City</label>
+        <input
+          type='text'
+          name='city'
+          value={city}
+          onChange={updateCity}/>
+        <label>State</label>
+        <select>
+          <option disabled selected>--Please select one--</option>
+          <option>AL</option>
+          <option>AK</option>
+          <option>AZ</option>
+          <option>AR</option>
+          <option>CA</option>
+          <option>CO</option>
+          <option>CT</option>
+          <option>DE</option>
+          <option>FL</option>
+          <option>GA</option>
+          <option>HI</option>
+          <option>ID</option>
+          <option>IL</option>
+          <option>IN</option>
+          <option>IA</option>
+          <option>KS</option>
+          <option>KY</option>
+          <option>LA</option>
+          <option>ME</option>
+          <option>MD</option>
+          <option>MA</option>
+          <option>MI</option>
+          <option>MN</option>
+          <option>MS</option>
+          <option>MO</option>
+          <option>MT</option>
+          <option>NE</option>
+          <option>NV</option>
+          <option>NH</option>
+          <option>NJ</option>
+          <option>NM</option>
+          <option>NY</option>
+          <option>NC</option>
+          <option>ND</option>
+          <option>OH</option>
+          <option>OK</option>
+          <option>OR</option>
+          <option>PA</option>
+          <option>RI</option>
+          <option>SC</option>
+          <option>SD</option>
+          <option>TN</option>
+          <option>TX</option>
+          <option>UT</option>
+          <option>VT</option>
+          <option>VA</option>
+          <option>WA</option>
+          <option>WV</option>
+          <option>WI</option>
+          <option>WY</option>
+        </select>
+        <label>Profile Photo</label>
+        <label>About You</label>
+        <br></br>
+        <br></br>
         <label>User Name</label>
         <input
           type='text'

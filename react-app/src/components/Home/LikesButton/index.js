@@ -1,9 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { useSelector } from 'react-redux';
 import './LikeButton.css'
 
 function LikesButton({ bunny, sessionUser }) {
 
+    const likes = useSelector(state => state.likes)
     const [liked, setLiked] = useState(false)
+    console.log(liked)
+    console.log(likes[bunny?.id])
+
+    useEffect(() => {
+        if (likes[bunny?.id]) setLiked(true);
+    }, [likes])
 
     const onClick = async () => {
         setLiked(!liked)

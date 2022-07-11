@@ -1,13 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LikesButton from './LikesButton';
+import { getLikes } from '../../store/like';
 
 
 function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
     const sessionUser = useSelector(state => state.session.user)
     const bunnies = Object.values(bunnyState)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getLikes(sessionUser?.id))
+
+    },[dispatch])
 
     return (
         <div>

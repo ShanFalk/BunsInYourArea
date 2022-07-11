@@ -8,6 +8,7 @@ import { getLikes } from '../../store/like';
 function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
     const sessionUser = useSelector(state => state.session.user)
+    const likes = useSelector(state => state.likes)
     const bunnies = Object.values(bunnyState)
     const dispatch = useDispatch()
 
@@ -29,7 +30,7 @@ function BunniesList() {
                             <li>{bunny.breed}</li>
                         </ul>
                     </Link>
-                    <LikesButton bunny={bunny} sessionUser={sessionUser}/>
+                    <LikesButton likes={likes} bunny={bunny} sessionUser={sessionUser}/>
                     </div>
                 )
             })}

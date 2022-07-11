@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { like, unlike } from '../../../store/like';
 import './LikeButton.css'
 
@@ -14,9 +14,6 @@ function LikesButton({ bunny, sessionUser, likes }) {
 
 
     const onClick = async () => {
-        // console.log(isLiked)
-        // setLiked(!isLiked)
-        // console.log(isLiked)
 
         const payload = {
             user_id: sessionUser?.id,
@@ -43,7 +40,7 @@ function LikesButton({ bunny, sessionUser, likes }) {
     }
 
     return (
-        <button onClick={onClick} className={liked ? "selected" : ""}><i className="fa-solid fa-heart"></i></button>
+        <button onClick={onClick} className={isLiked ? "selected" : ""}><i className="fa-solid fa-heart"></i></button>
     )
 }
 

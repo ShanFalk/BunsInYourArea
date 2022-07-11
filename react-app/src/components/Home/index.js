@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LikesButton from './LikesButton';
+
 
 function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
@@ -19,6 +21,7 @@ function BunniesList() {
                             <li>{bunny.name}</li>
                             <li>{bunny.breed}</li>
                         </ul>
+                        <LikesButton bunny={bunny} sessionUser={sessionUser}/>
                     </div>
                     </Link>
                 )

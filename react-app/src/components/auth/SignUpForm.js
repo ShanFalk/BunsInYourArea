@@ -20,8 +20,21 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    const payload = {
+      firstname,
+      lastname,
+      username,
+      email,
+      password,
+      image_url: imgUrl,
+      biography: bio,
+      city,
+      state
+    }
+
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(payload));
       if (data) {
         setErrors(data)
       }
@@ -52,7 +65,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
@@ -81,8 +94,8 @@ const SignUpForm = () => {
           name='city'
           value={city}
           onChange={updateCity}/>
-        <label>State</label>
-        <select>
+        <label htmlFor='state'>State</label>
+        <select name='state' value={state} onChange={updateState}>
           <option disabled selected>--Please select one--</option>
           <option>AL</option>
           <option>AK</option>
@@ -135,8 +148,19 @@ const SignUpForm = () => {
           <option>WI</option>
           <option>WY</option>
         </select>
-        <label>Profile Photo</label>
-        <label>About You</label>
+        <label htmlFor='image'>Profile Photo</label>
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={updateImage}
+        />
+        <label htmlFor='bio'>About You</label>
+        <textarea
+          name="bio"
+          value={bio}
+          onChange={updateBio}
+        />
         <br></br>
         <br></br>
         <label>User Name</label>

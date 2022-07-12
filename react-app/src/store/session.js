@@ -24,7 +24,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +40,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -70,19 +70,37 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (payload) => async (dispatch) => {
+
+  const {
+    firstname,
+    lastname,
+    username,
+    email,
+    password,
+    image_url,
+    biography,
+    city,
+    state
+  } = payload
+
+  const form = new FormData();
+
+  form.append('firstname', firstname)
+  form.append('lastname', lastname)
+  form.append('username', username)
+  form.append('email', email)
+  form.append('password', password)
+  form.append('image_url', image_url)
+  form.append('biography', biography)
+  form.append('city', city)
+  form.append('state', state)
+
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
-  });
-  
+    body: form
+    });
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))

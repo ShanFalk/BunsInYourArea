@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
@@ -21,11 +21,12 @@ def username_exists(form, field):
 
 
 class SignUpForm(FlaskForm):
-    firstname = StringField('firstname', validators=[DataRequired()])
-    lastname = StringField('lastname', validators=[DataRequired()])
+    firstname = StringField('firstname', validators=[DataRequired('Please provide a first name')])
+    lastname = StringField('lastname', validators=[DataRequired('Please provide a last name')])
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired()])
-    city = StringField('city', validators=[DataRequired()])
-    state = StringField('state', validators=[DataRequired()])
+        'username', validators=[DataRequired('Please provide a username'), username_exists])
+    email = StringField('email', validators=[DataRequired('Please provide an email address'), user_exists])
+    password = StringField('password', validators=[DataRequired('please provide a password')])
+    biography = TextAreaField('biography')
+    city = StringField('city', validators=[DataRequired('Please provide a city')])
+    state = StringField('state', validators=[DataRequired('Please provide a state')])

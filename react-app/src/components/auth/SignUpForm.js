@@ -32,7 +32,7 @@ const SignUpForm = () => {
       city,
       state
     }
-
+    console.log('THIS IS THE PAYLOAD IN THE FORM', payload)
     if (password === repeatPassword) {
       const data = await dispatch(signUp(payload));
       if (data) {

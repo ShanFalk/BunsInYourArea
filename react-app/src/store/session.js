@@ -71,7 +71,7 @@ export const logout = () => async (dispatch) => {
 
 
 export const signUp = (payload) => async (dispatch) => {
-
+  console.log('THIS IS THE PAYLOAD', payload)
   const {
     firstname,
     lastname,
@@ -95,7 +95,7 @@ export const signUp = (payload) => async (dispatch) => {
   form.append('biography', biography)
   form.append('city', city)
   form.append('state', state)
-
+  console.log('THIS IS THE FORM', form)
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     body: form
@@ -103,6 +103,7 @@ export const signUp = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log('THIS IS THE DATA', data)
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {

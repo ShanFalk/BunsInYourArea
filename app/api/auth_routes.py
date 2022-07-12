@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from app.utils import upload
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -59,13 +60,27 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
+    image_url = None
+    print('*'*50,request.files)
+    print('*'*50, request.data)
+    if "image_url" in request.files.keys():
+        image = request.files["image_url"]
+        image_url = upload(image)
+
     form = SignUpForm()
+    print('*'*50,form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
+            firstname=form.data['firstname'],
+            lastname=form.data['lastname'],
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            image_url=image_url,
+            biography=form.data['biography'],
+            city=form.data['city'],
+            state=form.data['state'],
         )
         db.session.add(user)
         db.session.commit()

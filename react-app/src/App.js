@@ -14,6 +14,7 @@ import { getAllBunnies } from './store/bunny';
 import { getReviews } from './store/review';
 import Bunny from './components/Bunny';
 import NotFound from './components/NotFound';
+import Splash from './components/Splash';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/' exact={true}>
+          <Splash />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />

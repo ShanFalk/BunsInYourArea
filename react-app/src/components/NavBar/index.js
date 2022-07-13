@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <nav className='nav'>
       <div className='nav-container'>
-          <NavLink to='/home' exact={true} className='roboto no-decor logo'>
+          <NavLink to='/home' exact={true} className='playfair no-decor logo'>
             <img id='logo-pic' src={logo} alt='the buns in your area logo'/>in your area
           </NavLink>
         {!sessionUser && (

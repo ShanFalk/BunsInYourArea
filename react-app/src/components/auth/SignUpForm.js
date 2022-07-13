@@ -32,11 +32,24 @@ const SignUpForm = () => {
       city,
       state
     }
-    console.log('THIS IS THE PAYLOAD IN THE FORM', payload)
     if (password === repeatPassword) {
       const data = await dispatch(signUp(payload));
       if (data) {
-        setErrors(data)
+          const errors = data.map((error) => {
+            let label = error.indexOf(':')
+            return error.slice(label + 1)
+        })
+        setErrors(errors)
+      }
+    } else {
+      const data = await dispatch(signUp(payload));
+      if (data) {
+        let errors = data.map((error) => {
+          let label = error.indexOf(':')
+          return error.slice(label + 1)
+      })
+      errors.push('Password and Repeat Password must match');
+        setErrors(errors)
       }
     }
   };
@@ -73,7 +86,7 @@ const SignUpForm = () => {
       <form onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='required' key={ind}>{error}</div>
           ))}
         </div>
         <h2 className='playfair'>Getting to know you...</h2>
@@ -98,7 +111,7 @@ const SignUpForm = () => {
             onChange={updateCity} />
           <label htmlFor='state'>State<span className='required'>*</span></label>
           <select name='state' value={state} onChange={updateState}>
-            <option disabled selected>--Please select one--</option>
+            <option selected value="">--Please select one--</option>
             <option>AL</option>
             <option>AK</option>
             <option>AZ</option>
@@ -199,7 +212,6 @@ const SignUpForm = () => {
             name='repeat_password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
-            required={true}
           ></input>
         </div>
         <button className='button blue' type='submit'>Sign Up</button>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from '../Auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 import { login } from '../../store/session';
 import './NavBar.css'
 import '../../styles/display.css'

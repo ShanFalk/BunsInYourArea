@@ -1,1 +1,23 @@
 /* TODO Add site wide styles */
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+html {
+    background-color: #fef9ef;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 16px;
+    height: 100%;
+}
+
+.roboto {
+    font-family: 'Playfair Display';
+}

@@ -15,7 +15,7 @@ def get_bunnies():
 @login_required
 @bunny_routes.route("", methods=["POST"])
 def add_bunny():
-
+    print('*'*50, request.files)
     image = request.files["image_url"]
     image_url = upload(image)
 

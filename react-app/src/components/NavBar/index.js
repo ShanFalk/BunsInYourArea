@@ -29,7 +29,7 @@ const NavBar = () => {
         {!sessionUser && (
           <>
           <div className='nav-links-container'>
-            <button onClick={onClick}>Demo</button>
+            <button className='button yellow' onClick={onClick}>Demo</button>
             <NavLink to='/login' exact={true} className='no-decor nav-link'>
               Log in
             </NavLink>

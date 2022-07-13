@@ -61,14 +61,13 @@ def sign_up():
     Creates a new user and logs them in
     """
     image_url = None
-    print('*'*50,request.files)
-    print('*'*50, request.form)
-    if "image_url" in request.form.keys():
-        image = request.form["image_url"]
+    print('*'*50,request.files.keys())
+
+    if "image_url" in request.files.keys():
+        image = request.files["image_url"]
         image_url = upload(image)
 
     form = SignUpForm()
-    print('*'*50,form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(

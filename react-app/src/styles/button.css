@@ -1,0 +1,12 @@
+.button {
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+}
+
+.yellow {
+    border: 2px solid #d2bf55;
+    background-color: #d2bf55;
+}

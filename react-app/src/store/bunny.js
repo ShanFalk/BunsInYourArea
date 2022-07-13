@@ -71,7 +71,7 @@ export const updateBunny = (payload) => async  (dispatch) => {
 }
 
 export const createBunny = (payload) => async (dispatch) => {
-
+    console.log('THIS IS THE PAYLOAD', payload)
     const {
         user_id,
         name,
@@ -93,7 +93,7 @@ export const createBunny = (payload) => async (dispatch) => {
     form.append('image_url', image_url)
     form.append('is_adoptable', is_adoptable)
 
-
+    console.log('THIS IS THE FORM', form)
     const response = await fetch('/api/bunnies', {
         method: "POST",
         body: form

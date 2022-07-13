@@ -45,7 +45,7 @@ const SignUpForm = () => {
   const updateLastName = (e) => setLastName(e.target.value);
   const updateCity = (e) => setCity(e.target.value);
   const updateState = (e) => setState(e.target.value);
-  const updateImage = (e) => setImgUrl(e.target.value);
+  const updateImage = (e) => setImgUrl(e.target.files[0]);
   const updateBio = (e) => setBio(e.target.value);
 
   const updateUsername = (e) => {

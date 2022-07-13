@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { NavLink, useHistory } from 'react-router-dom';
+import LogoutButton from '../Auth/LogoutButton';
 import { login } from '../../store/session';
 import './NavBar.css'
 import '../../styles/display.css'
@@ -11,28 +10,21 @@ import logo from './logo.png'
 const NavBar = () => {
 
   const sessionUser = useSelector(state => state.session.user)
-  const dispatch = useDispatch()
-  const [errors, setErrors] = useState([])
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const onClick = async (e) => {
     e.preventDefault();
 
-    const data = await dispatch(login("demo@aa.io", "password"));
-    if (data) {
-      setErrors(data);
-    }
-  }
-
-  if (sessionUser) {
-
-    return <Redirect to='/home' />;
+    const data = await dispatch(login("demo@aa.io", "password"))
+      .then(history.push('/home'))
   }
 
   return (
     <nav className='nav'>
       <div className='nav-container'>
           <NavLink to='/home' exact={true} className='roboto no-decor logo'>
-            <img id='logo-pic' src={logo}/>in your area
+            <img id='logo-pic' src={logo} alt='the buns in your area logo'/>in your area
           </NavLink>
         {!sessionUser && (
           <>

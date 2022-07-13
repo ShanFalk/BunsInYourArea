@@ -11,13 +11,14 @@ function Profile() {
     const sessionUser = useSelector(state => state.session.user);
     const { userId } = useParams()
 
-    const openModal = () => {
+    const openModal = (e) => {
+        e.preventDefault();
         setShowModal(true);
     }
 
     return (
         <div>
-            {sessionUser.id === parseInt(userId) && (
+            {sessionUser?.id === parseInt(userId) && (
             <button onClick={openModal}>Add a Bunny</button>
             )}
             {showModal && (

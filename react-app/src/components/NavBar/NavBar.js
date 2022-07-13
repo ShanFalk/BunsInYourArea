@@ -1,8 +1,9 @@
 
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, Redirect } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import { login } from '../../store/session';
 import './NavBar.css'
 import '../../styles/display.css'
 import logo from './logo.png'
@@ -10,6 +11,22 @@ import logo from './logo.png'
 const NavBar = () => {
 
   const sessionUser = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
+  const [errors, setErrors] = useState([])
+
+  const onClick = async (e) => {
+    e.preventDefault();
+
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    }
+  }
+
+  if (sessionUser) {
+
+    return <Redirect to='/home' />;
+  }
 
   return (
     <nav className='nav'>
@@ -20,6 +37,7 @@ const NavBar = () => {
         {!sessionUser && (
           <>
           <div className='nav-links-container'>
+            <button onClick={onClick}>Demo</button>
             <NavLink to='/login' exact={true} className='no-decor nav-link'>
               Log in
             </NavLink>

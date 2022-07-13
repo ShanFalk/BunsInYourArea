@@ -1,4 +1,5 @@
 pipenv shell
+exit shell
 flask db migrate
 flask db upgrade
 flask db downgrade
@@ -6,5 +7,8 @@ flask seed all
 flask seed undo
 pipenv run flask run
 flask seed undo
+pipenv i
+nstall --dev -r dev-requirements.txt && pipenv ins
+tall -r requirements.txt
 heroku run -a HEROKU_APP_NAME flask seed all
 heroku run -a HEROKU_APP_NAME flask undo

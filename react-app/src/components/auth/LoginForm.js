@@ -40,6 +40,7 @@ const LoginForm = () => {
           <div className='required' key={ind}>{error}</div>
         ))}
       </div>
+      <h2 className='playfair'>Welcome back!</h2>
       <div>
         <label htmlFor='email'>Email<span className='required'>*</span></label>
         <input

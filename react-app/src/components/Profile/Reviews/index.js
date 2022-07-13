@@ -16,7 +16,8 @@ function Reviews() {
 
     const [showModal, setShowModal] = useState(false);
 
-    const openModal = () => {
+    const openModal = (e) => {
+        e.stopPropagation();
         setShowModal(true);
     }
 

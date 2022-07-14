@@ -43,7 +43,7 @@ function EditReview({ review, setShowModal }) {
     return (
         <div className="edit-container">
             <h2 className="playfair">Edit Review</h2>
-            <form id='edit-form' onSubmit={onSubmit}>
+            <form className='modal-form' onSubmit={onSubmit}>
             {errors.length > 0 && <ul className='errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}

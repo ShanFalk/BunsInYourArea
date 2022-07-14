@@ -44,7 +44,7 @@ def upload_file_to_s3(file, acl="public-read"):
 def upload(image):
 
     if not allowed_file(image.filename):
-        return {"errors": "file type not permitted"}, 400
+        return None
 
     image.filename = get_unique_filename(image.filename)
 
@@ -65,5 +65,5 @@ def format_errors(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{field}: {error}')
     return errorMessages

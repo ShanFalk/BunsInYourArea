@@ -45,3 +45,11 @@ textarea {
 .file-input {
     margin-bottom: 8px;
 }
+
+.radio-container {
+    display: flex;
+}
+
+.no-list-style {
+    list-style: none;
+}

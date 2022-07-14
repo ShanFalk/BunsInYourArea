@@ -1,0 +1,25 @@
+.about-title {
+    text-align: center;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.about-pic {
+    justify-self: flex-end;
+}
+
+.headshot {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-text {
+    justify-self: flex-start;
+    align-self: center;
+    width: 75%;
+}

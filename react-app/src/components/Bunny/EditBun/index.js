@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router-dom";
-import {updateBunny, deleteBunny} from "../../../store/bunny";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { updateBunny, deleteBunny } from "../../../store/bunny";
 
-function EditBunny( { bunny, endEdit }) {
+function EditBunny({ bunny, endEdit }) {
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState(bunny?.name);
     const [age, setAge] = useState(bunny?.age);
@@ -41,10 +41,10 @@ function EditBunny( { bunny, endEdit }) {
             is_adoptable: isAdoptable
         }
 
-        let updatedBunny = await dispatch(updateBunny(payload)).catch(async(res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        });
+        let updatedBunny = await dispatch(updateBunny(payload))
+            .catch(async (data) => {
+                if (data && data.errors) setErrors(data.errors);
+            });
 
         if (updatedBunny) {
             endEdit()
@@ -54,16 +54,16 @@ function EditBunny( { bunny, endEdit }) {
 
     const handleDelete = async () => {
         await dispatch(deleteBunny(bunny.id))
-        .then(
-            history.push("/home")
-        )
+            .then(
+                history.push("/home")
+            )
     }
 
     return (
-        <div>
-            <h2>Update {bunny.name}</h2>
+        <div className="edit-bun-container">
+            <h2 className="playfair">Update {bunny.name}</h2>
             <form onSubmit={onSubmit}>
-                {errors.length > 0 && <ul className='errors'>
+                {errors.length > 0 && <ul className='required no-list-style'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
                 <label htmlFor="name">Name</label>
@@ -105,14 +105,17 @@ function EditBunny( { bunny, endEdit }) {
                     value={bio}
                     onChange={updateBio}
                 />
-                <label htmlFor="image">Image</label>
+                <label className="file-input-label" htmlFor="image">Image</label>
                 <input
                     type="file"
                     name="image"
                     accept="image/*"
                     onChange={updateImage}
+                    className="file-input"
                 />
                 <legend>Adoptable?</legend>
+                <div className="radio-container">
+                    <label htmlFor="adoptableNo">No</label>
                     <input
                         type="radio"
                         name="adoptable"
@@ -121,7 +124,7 @@ function EditBunny( { bunny, endEdit }) {
                         defaultChecked={!isAdoptable}
                         required
                     />
-                    <label htmlFor="adoptableNo">No</label>
+                    <label htmlFor="adoptableYes">Yes</label>
                     <input
                         type="radio"
                         name="adoptable"
@@ -129,11 +132,13 @@ function EditBunny( { bunny, endEdit }) {
                         onClick={updateAdoptable}
                         defaultChecked={isAdoptable}
                     />
-                    <label htmlFor="adoptableYes">Yes</label>
+                </div>
                 <button className="button blue">Update</button>
             </form>
-            <button onClick={() => endEdit()}>Cancel</button>
-            <button onClick={handleDelete}>Delete</button>
+            <div className="edit-bun-buttons">
+                <button className="button lavender" onClick={() => endEdit()}>Cancel</button>
+                <button className="button warning" onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     )
 }

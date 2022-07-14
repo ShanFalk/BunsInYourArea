@@ -37,6 +37,7 @@
 .pink:hover {
     background-color: #704C5E;
     border: 2px solid #704C5E;
+    cursor: pointer;
 }
 
 .warning {
@@ -47,4 +48,17 @@
 .warning:hover {
     background-color: #8d2e3a;
     border: 2px solid #8d2e3a;
+    cursor: pointer;
+}
+
+.lavender {
+    background-color: lavender;
+    border: 2px solid lavender;
+    color: black;
+}
+
+.lavender:hover {
+    background-color: rgb(189, 189, 255);
+    border: 2px solid rgb(189, 189, 255);
+    cursor: pointer;
 }

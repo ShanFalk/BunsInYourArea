@@ -16,7 +16,6 @@ def get_bunnies():
 @bunny_routes.route("", methods=["POST"])
 def add_bunny():
 
-    print('*'*50, request.form)
     image = request.files["image_url"]
     image_url = upload(image)
 
@@ -54,6 +53,9 @@ def updateBunny():
     if "image_url" in request.files.keys():
         image = request.files["image_url"]
         image_url = upload(image)
+
+        if not image_url:
+            return {'errors': ['Image: Invalid image type']}, 400
 
     form = UpdateBunny()
     form['csrf_token'].data = request.cookies['csrf_token']

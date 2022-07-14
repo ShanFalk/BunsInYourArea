@@ -33,7 +33,7 @@ function Bunny() {
                                 <div>
                                 <p>{bunny?.biography}</p>
                                 </div>
-                                {sessionUser.id === bunny?.user_id && <button onClick={() => setIsEditing(true)}>Edit</button>}
+                                {sessionUser.id === bunny?.user_id && <button className="button pink" onClick={() => setIsEditing(true)}>Edit</button>}
                             </ul>
                         </div>
                     </div>

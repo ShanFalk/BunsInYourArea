@@ -1,0 +1,28 @@
+.bunnies-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 350px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid cornflowerblue;
+}
+
+.thumbnail-image {
+    width: 100%;
+    object-fit: fill;
+    height: 250px;
+}
+
+.thumbnail-details {
+    list-style: none;
+    color: black;
+}

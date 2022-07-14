@@ -55,7 +55,6 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/home' exact={true} >
-          <h1>My Home Page</h1>
           <BunniesList />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:userId' exact={true}>

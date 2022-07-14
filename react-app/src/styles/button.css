@@ -2,8 +2,7 @@
     border-radius: 15px;
     text-decoration: none;
     color: white;
-    padding: 5px;
-    /* margin: 5px; */
+    padding: 6px;
     width: fit-content;
 }
 
@@ -12,8 +11,20 @@
     background-color: #d2bf55;
 }
 
+.yellow:hover {
+    background-color: #bba631;
+    border: 2px solid #bba631;
+    cursor: pointer;
+}
+
 .blue {
     border: 2px solid cornflowerblue;
     background-color: cornflowerblue;
     margin-top: 5px;
+}
+
+.blue:hover {
+    background-color: #0047ab;
+    border: 2px solid #0047ab;
+    cursor: pointer;
 }

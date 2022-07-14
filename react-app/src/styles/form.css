@@ -6,6 +6,11 @@
     margin: 25px;
 }
 
+.form-heading {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 form {
     display: flex;
     flex-direction: column;

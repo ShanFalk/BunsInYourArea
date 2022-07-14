@@ -23,11 +23,11 @@ const NavBar = () => {
   return (
     <nav className='nav'>
       <div className='nav-container'>
-          <NavLink to='/home' exact={true} className='playfair no-decor logo'>
-            <img id='logo-pic' src={logo} alt='the buns in your area logo'/>in your area
-          </NavLink>
         {!sessionUser && (
           <>
+          <NavLink to='/' exact={true} className='playfair no-decor logo'>
+            <img id='logo-pic' src={logo} alt='the buns in your area logo'/>in your area
+          </NavLink>
           <div className='nav-links-container'>
             <button className='button yellow' onClick={onClick}>Demo</button>
             <NavLink to='/login' exact={true} className='no-decor nav-link'>
@@ -41,10 +41,15 @@ const NavBar = () => {
         )}
         {sessionUser && (
           <>
-          <NavLink to={`/profile/${sessionUser.id}`} exact={true} className='nav-link'>
+          <NavLink to='/home' exact={true} className='playfair no-decor logo'>
+            <img id='logo-pic' src={logo} alt='the buns in your area logo'/>in your area
+          </NavLink>
+          <div className='nav-links-container'>
+          <NavLink to={`/profile/${sessionUser.id}`} exact={true} className='nav-link no-decor'>
             Profile
           </NavLink>
           <LogoutButton />
+          </div>
           </>
         )}
       </div>

@@ -16,7 +16,7 @@ function Splash() {
                     Buns in your area finds adoptable rabbits local to you!
                 </p>
             </div>
-            <div>
+            <div className='splash-video'>
             <iframe width="520" height="415"
                 src="https://www.youtube.com/embed/FcwHMB2IhHQ?controls=0&autoplay=1&mute=1&loop=1&playlist=FcwHMB2IhHQ">
             </iframe>

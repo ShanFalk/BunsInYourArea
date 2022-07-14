@@ -130,7 +130,7 @@ function EditBunny( { bunny, endEdit }) {
                         defaultChecked={isAdoptable}
                     />
                     <label htmlFor="adoptableYes">Yes</label>
-                <button>Update</button>
+                <button className="button blue">Update</button>
             </form>
             <button onClick={() => endEdit()}>Cancel</button>
             <button onClick={handleDelete}>Delete</button>

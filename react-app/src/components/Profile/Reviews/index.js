@@ -23,21 +23,19 @@ function Reviews() {
 
     return (
         <div>
-            <h2 className="playfair">Reviews</h2>
+            <h2 className="playfair reviews-heading">Reviews</h2>
             {myReviews.map((review) => {
                 return (
-                    <div key={review.id}>
-                        <ul>
-                            <li>{review.rating}</li>
-                            <li>{review.content}</li>
-                            <div>
-                                <img alt="the user" src={review.reviewer.image_url} />
-                                <li>{review.reviewer.username}</li>
-                            </div>
+                    <div className='review-container' key={review.id}>
+                        <p>{review.rating}</p>
+                        <p>{review.content}</p>
+                        <div className="reviewer-details">
+                            <img className='user-profile-pic-small' alt="the user" src={review.reviewer.image_url} />
+                            <p>{review.reviewer.username}</p>
+                        </div>
                             {sessionUser.id === review.reviewer.id && (
-                            <button onClick={openModal}>Edit</button>
+                            <button className='button pink' onClick={openModal}>Edit</button>
                             )}
-                        </ul>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
                                 <EditReview setShowModal={setShowModal} review={review}/>

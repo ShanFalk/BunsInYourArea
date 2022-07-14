@@ -41,9 +41,9 @@ function EditReview({ review, setShowModal }) {
     }
 
     return (
-        <div>
-            <h2>Edit Review</h2>
-            <form onSubmit={onSubmit}>
+        <div className="edit-container">
+            <h2 className="playfair">Edit Review</h2>
+            <form id='edit-form' onSubmit={onSubmit}>
             {errors.length > 0 && <ul className='errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
@@ -64,9 +64,11 @@ function EditReview({ review, setShowModal }) {
                     onChange={updateContent}
                     required
                 />
-                <button>Submit</button>
+                <button className="button blue">Submit</button>
             </form>
-                <button onClick={handleDelete}>Delete</button>
+            <div className="delete">
+                <button className='button warning' onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     )
 }

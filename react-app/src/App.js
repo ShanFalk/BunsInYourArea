@@ -15,6 +15,7 @@ import { getReviews } from './store/review';
 import Bunny from './components/Bunny';
 import NotFound from './components/NotFound';
 import Splash from './components/Splash';
+import Footer from './components/Footer';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ function App() {
         <NotFound />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

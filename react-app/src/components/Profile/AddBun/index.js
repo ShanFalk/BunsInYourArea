@@ -39,8 +39,9 @@ function AddBunny() {
             is_adoptable: isAdoptable
         }
 
-        let createdBunny = await dispatch(createBunny(payload)).catch(async(res) => {
-            const data = await res.json();
+        let createdBunny = await dispatch(createBunny(payload))
+            .catch(async(data) => {
+                console.log(data.errors)
             if (data && data.errors) setErrors(data.errors);
         });
 
@@ -51,12 +52,12 @@ function AddBunny() {
 
     return (
         <div>
-            <h2>Add a New Bunny</h2>
-            <form onSubmit={onSubmit}>
-                {errors.length > 0 && <ul className='errors'>
+            <h2 className="playfair">Add a New Bunny</h2>
+            <form className='modal-form' onSubmit={onSubmit}>
+                {errors.length > 0 && <ul className='required no-list-style'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Name<span className='required'>*</span></label>
                 <input
                     type="text"
                     name="name"
@@ -64,7 +65,7 @@ function AddBunny() {
                     value={name}
                     onChange={updateName}
                 />
-                <label htmlFor="age">Age</label>
+                <label htmlFor="age">Age in years<span className='required'>*</span></label>
                 <input
                     type="number"
                     name="age"
@@ -76,13 +77,13 @@ function AddBunny() {
                     required
                     onChange={updateAge}
                 />
-                <label htmlFor="sex">Sex</label>
+                <label htmlFor="sex">Sex<span className='required'>*</span></label>
                 <select name="sex" onChange={updateSex} value={sex} required>
                     <option value="" disabled selected>--Please choose an option--</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>
-                <label htmlFor="breed">Breed</label>
+                <label htmlFor="breed">Breed<span className='required'>*</span></label>
                 <input
                     type="text"
                     name="breed"
@@ -96,15 +97,18 @@ function AddBunny() {
                     value={bio}
                     onChange={updateBio}
                 />
-                <label htmlFor="image">Image</label>
+                <label className="file-input-label" htmlFor="image">Image<span className='required'>*</span></label>
                 <input
+                    className="file-input"
                     type="file"
                     name="image"
                     required
                     accept="image/*"
                     onChange={updateImage}
                 />
-                <legend>Adoptable?</legend>
+                <legend>Adoptable?<span className='required'>*</span></legend>
+                <div className="radio-container">
+                    <label htmlFor="adoptableNo">No</label>
                     <input
                         type="radio"
                         name="adoptable"
@@ -112,15 +116,15 @@ function AddBunny() {
                         onClick={updateAdoptable}
                         required
                     />
-                    <label htmlFor="adoptableNo">No</label>
+                    <label htmlFor="adoptableYes">Yes</label>
                     <input
                         type="radio"
                         name="adoptable"
                         value={true}
                         onClick={updateAdoptable}
                     />
-                    <label htmlFor="adoptableYes">Yes</label>
-                <button>Submit</button>
+                </div>
+                <button className="button blue">Submit</button>
             </form>
         </div>
     )

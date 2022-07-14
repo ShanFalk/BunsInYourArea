@@ -11,4 +11,4 @@ pipenv i
 nstall --dev -r dev-requirements.txt && pipenv ins
 tall -r requirements.txt
 heroku run -a HEROKU_APP_NAME flask seed all
-heroku run -a HEROKU_APP_NAME flask undo
+heroku run -a HEROKU_APP_NAME flask seed undo

@@ -23,15 +23,15 @@ export const deleteBunny = (bunId) => async (dispatch) => {
     })
     if (response.ok) {
         const data = await response.json()
-        if(data.errors){
+        if (data.errors) {
             return;
         }
-        if(data.Successful) dispatch(removeOne(bunId));
+        if (data.Successful) dispatch(removeOne(bunId));
         return data;
     }
 }
 
-export const updateBunny = (payload) => async  (dispatch) => {
+export const updateBunny = (payload) => async (dispatch) => {
     const {
         id,
         user_id,
@@ -71,6 +71,7 @@ export const updateBunny = (payload) => async  (dispatch) => {
 }
 
 export const createBunny = (payload) => async (dispatch) => {
+
     console.log('THIS IS THE PAYLOAD', payload)
     const {
         user_id,
@@ -93,7 +94,6 @@ export const createBunny = (payload) => async (dispatch) => {
     form.append('image_url', image_url)
     form.append('is_adoptable', is_adoptable)
 
-    console.log('THIS IS THE FORM', form)
     const response = await fetch('/api/bunnies', {
         method: "POST",
         body: form
@@ -102,10 +102,15 @@ export const createBunny = (payload) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            return;
+            throw (data);
         }
         dispatch(createOne(data));
         return data
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            throw (data);
+        }
     }
 
 }
@@ -132,9 +137,9 @@ export default function bunnyReducer(state = initialState, action) {
             const bunnies = action.bunnies
             return { ...state, ...bunnies }
         case POST_BUNNY:
-            return {...state, [action.bunny.id] : action.bunny}
+            return { ...state, [action.bunny.id]: action.bunny }
         case DELETE_BUNNY:
-            let newState = {...state}
+            let newState = { ...state }
             delete newState[action.bunId]
             return newState
         default:

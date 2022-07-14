@@ -1,9 +1,9 @@
 .profile {
     display: flex;
     flex-direction: column;
-    margin: 40px;
-    width: 70%;
-    margin-left: 20px;
+    margin-top: 40px;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .user-profile-pic-container {
@@ -21,6 +21,7 @@
 
 .user-details {
     margin-left: 15px;
+    width: 500px;
 }
 
 .review-form-container {

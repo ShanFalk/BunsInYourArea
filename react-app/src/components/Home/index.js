@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LikesButton from './LikesButton';
 import { getLikes } from '../../store/like';
 import './Home.css'
+import '../../styles/display.css'
 
 
 function BunniesList() {

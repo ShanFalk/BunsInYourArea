@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../index.css'
-import './Splash.css'
+import '../../styles/display.css'
 
 function Splash() {
     return (
-        <div className='splash-container'>
-            <div className='splash-info'>
+        <div className='two-col-grid'>
+            <div className='two-col-info'>
                 <h1 className='playfair'>
                     There's somebun for everyone
                 </h1>

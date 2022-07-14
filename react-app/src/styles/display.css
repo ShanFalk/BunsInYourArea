@@ -1,3 +1,21 @@
 .no-decor {
     text-decoration: none;
 }
+
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0px;
+}
+
+.two-col-info {
+    text-align: center;
+    align-self: center;
+    justify-content: flex-start;
+}
+
+.thumbnail-details {
+    list-style: none;
+    color: black;
+}

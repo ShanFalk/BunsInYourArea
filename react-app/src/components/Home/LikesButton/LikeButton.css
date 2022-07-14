@@ -1,4 +1,21 @@
 .selected {
     color: palevioletred;
-    background-color: red,
+}
+
+.unselected {
+    color: rgb(0, 0, 0, 0.2);
+}
+
+.likes-btn {
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.likes-container {
+    display: flex;
+    justify-content: flex-end;
 }

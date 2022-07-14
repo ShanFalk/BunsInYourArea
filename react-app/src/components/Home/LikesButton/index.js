@@ -40,7 +40,9 @@ function LikesButton({ bunny, sessionUser, likes }) {
     }
 
     return (
-        <button onClick={onClick} className={isLiked ? "selected" : ""}><i className="fa-solid fa-heart"></i></button>
+        <div className="likes-container">
+            <button onClick={onClick} className={ `likes-btn ${isLiked ? "selected" : "unselected"}`}><i className="fa-solid fa-heart fa-2x"></i></button>
+        </div>
     )
 }
 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LikesButton from './LikesButton';
 import { getLikes } from '../../store/like';
+import './Home.css'
 
 
 function BunniesList() {
@@ -23,21 +24,23 @@ function BunniesList() {
 
     return (
         <div>
-            <h2>Bunnies near {sessionUser.city}, {sessionUser.state}</h2>
+            <h1>Bunnies near {sessionUser.city}, {sessionUser.state}</h1>
+            <div className='bunnies-container'>
             {localBunnies.map((bunny) => {
                 return (
-                    <div key={bunny.id} >
-                        <Link to={`/bunnies/${bunny.id}`}>
-                        <ul>
-                            <li><img alt='a cute bunny' src={bunny.image_url}/></li>
-                            <li>{bunny.name}</li>
-                            <li>{bunny.breed}</li>
+                    <div key={bunny.id} className='thumbnail' >
+                        <Link className='no-decor' to={`/bunnies/${bunny.id}`}>
+                            <img className='thumbnail-image' alt='a cute bunny' src={bunny.image_url}/>
+                        <ul className='thumbnail-details'>
+                            <li>Name: {bunny.name}</li>
+                            <li>Breed: {bunny.breed}</li>
                         </ul>
                     </Link>
                     <LikesButton likes={likes} bunny={bunny} sessionUser={sessionUser}/>
                     </div>
                 )
             })}
+            </div>
         </div>
     )
 }

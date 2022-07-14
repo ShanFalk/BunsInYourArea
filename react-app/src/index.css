@@ -21,3 +21,10 @@ body {
 .playfair {
     font-family: 'Playfair Display';
 }
+
+h1 {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0px;
+    font-family: 'Playfair Display';
+}

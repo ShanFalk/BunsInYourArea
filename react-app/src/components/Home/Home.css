@@ -6,7 +6,6 @@
 
 .thumbnail {
     width: 350px;
-    height: 360px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,4 +19,9 @@
     width: 100%;
     object-fit: fill;
     height: 250px;
+}
+
+.adopt {
+    background-color: aquamarine;
+    width: fit-content;
 }

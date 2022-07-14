@@ -7,7 +7,7 @@ function AboutMe() {
             <h2 className="playfair about-title">About Buns in your area</h2>
             <div className='about-grid'>
                 <div className='about-pic'>
-                    <img className='headshot' src={headshot} />
+                    <img className='headshot' alt="A headshot of the website software engineer" src={headshot} />
                 </div>
                 <div className='about-text'>
                     <p>

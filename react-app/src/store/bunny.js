@@ -63,10 +63,16 @@ export const updateBunny = (payload) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            return;
+            throw (data);
         }
         dispatch(createOne(data));
         return data
+    } else if (response.status < 500) {
+        const data = await response.json();
+        console.log('THIS IS THE DATA IN THE THUNK', data)
+        if (data.errors) {
+            throw (data);
+        }
     }
 }
 

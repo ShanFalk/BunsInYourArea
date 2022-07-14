@@ -24,3 +24,17 @@
 .org-name{
     color: cornflowerblue;
 }
+
+.edit-bun-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-bun-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}

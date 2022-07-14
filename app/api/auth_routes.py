@@ -61,11 +61,13 @@ def sign_up():
     Creates a new user and logs them in
     """
     image_url = None
-    print('*'*50,request.files.keys())
 
     if "image_url" in request.files.keys():
         image = request.files["image_url"]
         image_url = upload(image)
+
+        if not image_url:
+            return {'errors': ['Image: Invalid image type']}, 400
 
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']

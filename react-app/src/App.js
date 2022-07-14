@@ -16,6 +16,7 @@ import Bunny from './components/Bunny';
 import NotFound from './components/NotFound';
 import Splash from './components/Splash';
 import Footer from './components/Footer';
+import AboutMe from './components/About';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <div id='main-content'>
       <Switch>
         <Route path='/' exact={true}>
           <Splash />
@@ -64,10 +66,14 @@ function App() {
         <ProtectedRoute path='/bunnies/:bunId' exact={true}>
           <Bunny />
         </ProtectedRoute>
+        <Route path='/about' exact={true}>
+          <AboutMe />
+        </Route>
         <Route>
         <NotFound />
         </Route>
       </Switch>
+      </div>
       <Footer />
     </BrowserRouter>
   );

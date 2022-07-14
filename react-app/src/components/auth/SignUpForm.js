@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import '../../styles/button.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -89,7 +90,7 @@ const SignUpForm = () => {
             <div className='required' key={ind}>{error}</div>
           ))}
         </div>
-        <h2 className='playfair'>Getting to know you...</h2>
+        <h2 className='playfair form-heading'>Getting to know you...</h2>
         <div>
           <label htmlFor='firstname'>First Name<span className='required'>*</span></label>
           <input
@@ -169,7 +170,6 @@ const SignUpForm = () => {
             name="image"
             accept="image/*"
             onChange={updateImage}
-            className='file-input'
           />
           <label htmlFor='bio'>About You</label>
           <textarea
@@ -178,7 +178,7 @@ const SignUpForm = () => {
             onChange={updateBio}
           />
           <br></br>
-          <h2 className='playfair'>Account info</h2>
+          <h2 className='playfair form-heading'>Account info</h2>
           <label>User Name<span className='required'>*</span></label>
           <input
             type='text'

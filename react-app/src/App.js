@@ -58,11 +58,9 @@ function App() {
           <BunniesList />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:userId' exact={true}>
-          <h1>My Profile</h1>
           <Profile />
         </ProtectedRoute>
         <ProtectedRoute path='/bunnies/:bunId' exact={true}>
-          <h1>New Bunny</h1>
           <Bunny />
         </ProtectedRoute>
         <Route>

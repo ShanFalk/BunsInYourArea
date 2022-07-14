@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import EditBunny from './EditBun';
+import './Bunny.css';
+import '../../styles/display.css'
 
 function Bunny() {
     const { bunId } = useParams();
@@ -16,21 +18,29 @@ function Bunny() {
     return (
         <div>
             {!isEditing && (
-            <div>
-                <ul>
-                    <li><img alt='An adorable bunny' src={bunny?.image_url}/></li>
-                    <li>{bunny?.name}</li>
-                    <li>{bunny?.biography}</li>
-                    <li>{bunny?.breed}</li>
-                    <li>{bunny?.sex}</li>
-                    <li>{bunny?.age}</li>
-                    <li>Organization: <Link to={`/profile/${bunny?.user.id}`}>{bunny?.user.username}</Link></li>
-                    {sessionUser.id === bunny?.user_id && <button onClick={() => setIsEditing(true)}>Edit</button>}
-                </ul>
-            </div>
+                <>
+                    <h1>{bunny?.name}</h1>
+                    <div className='two-col-grid'>
+                        <div className='bunny-profile-pic'>
+                            <img className='bunny-pic' alt='An adorable bunny' src={bunny?.image_url} />
+                        </div>
+                        <div className='bunny-details'>
+                            <ul className='thumbnail-details'>
+                                <h3>Organization: <Link className='no-decor org-name' to={`/profile/${bunny?.user.id}`}>{bunny?.user.username}</Link></h3>
+                                <li>Breed: {bunny?.breed}</li>
+                                <li>Sex: {bunny?.sex}</li>
+                                <li>Age: {bunny?.age} years</li>
+                                <div>
+                                <p>{bunny?.biography}</p>
+                                </div>
+                                {sessionUser.id === bunny?.user_id && <button onClick={() => setIsEditing(true)}>Edit</button>}
+                            </ul>
+                        </div>
+                    </div>
+                </>
             )}
             {isEditing && (
-                <EditBunny bunny={bunny} endEdit={onEditEnd}/>
+                <EditBunny bunny={bunny} endEdit={onEditEnd} />
             )}
         </div>
     )

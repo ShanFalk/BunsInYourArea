@@ -28,3 +28,23 @@
     border: 2px solid #0047ab;
     cursor: pointer;
 }
+
+.pink {
+    background-color: #af728e;
+    border: 2px solid #af728e;
+}
+
+.pink:hover {
+    background-color: #704C5E;
+    border: 2px solid #704C5E;
+}
+
+.warning {
+    background-color: #cb4154;
+    border: 2px solid #cb4154;
+}
+
+.warning:hover {
+    background-color: #8d2e3a;
+    border: 2px solid #8d2e3a;
+}

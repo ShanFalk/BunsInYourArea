@@ -1,0 +1,26 @@
+.bunny-profile-pic{
+    width: 60%;
+    height: 60%;
+    height: auto;
+    align-self: center;
+    justify-self: center;
+}
+
+.bunny-pic {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    border-radius: 5px;
+}
+
+.bunny-details {
+    align-self: center;
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding-right: 40px;
+}
+
+.org-name{
+    color: cornflowerblue;
+}

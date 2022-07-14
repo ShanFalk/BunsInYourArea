@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {useSelector, useDispatch} from "react-redux";
 import { useParams } from "react-router-dom";
 import { createReview } from "../../../store/review";
+import '../Profile.css'
 
 function ReviewForm() {
     const [rating, setRating] = useState('');
@@ -39,9 +40,9 @@ function ReviewForm() {
     }
 
     return (
-        <div>
-            <h2>Leave a Review</h2>
-            <form onSubmit={onSubmit}>
+        <div className="review-form-container">
+            <h2 className="playfair">Tell us about your adoption experience!</h2>
+            <form id='review-form' onSubmit={onSubmit}>
             {errors.length > 0 && <ul className='errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
@@ -62,7 +63,7 @@ function ReviewForm() {
                     onChange={updateContent}
                     required
                 />
-                <button>Submit</button>
+                <button className="button blue">Submit</button>
             </form>
         </div>
     )

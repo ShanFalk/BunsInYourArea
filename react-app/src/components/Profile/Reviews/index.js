@@ -23,7 +23,7 @@ function Reviews() {
 
     return (
         <div>
-            <h2>Reviews</h2>
+            <h2 className="playfair">Reviews</h2>
             {myReviews.map((review) => {
                 return (
                     <div key={review.id}>

@@ -25,14 +25,14 @@ function LikesList({ sessionUser }) {
             <div className="bunnies-container">
                 {likedBunnies.map((bunny) => {
                     return (
-                        <div key={bunny.id} className='thumbnail' >
-                            <Link className='no-decor' to={`/bunnies/${bunny.id}`}>
-                                <img className='thumbnail-image' alt='a cute bunny' src={bunny.image_url} />
+                        <div key={bunny?.id} className='thumbnail' >
+                            <Link className='no-decor' to={`/bunnies/${bunny?.id}`}>
+                                <img className='thumbnail-image' alt='a cute bunny' src={bunny?.image_url} />
 
                                 <ul className='thumbnail-details'>
-                                    <li>Name: {bunny.name}</li>
-                                    <li>Breed: {bunny.breed}</li>
-                                    {bunny.is_adoptable && (
+                                    <li>Name: {bunny?.name}</li>
+                                    <li>Breed: {bunny?.breed}</li>
+                                    {bunny?.is_adoptable && (
                                         <li className='adopt'>adopt me!</li>
                                     )}
                                 </ul>

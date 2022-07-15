@@ -36,9 +36,9 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(payload));
       if (data) {
-          const errors = data.map((error) => {
-            let label = error.indexOf(':')
-            return error.slice(label + 1)
+        const errors = data.map((error) => {
+          let label = error.indexOf(':')
+          return error.slice(label + 1)
         })
         setErrors(errors)
       }
@@ -48,8 +48,8 @@ const SignUpForm = () => {
         let errors = data.map((error) => {
           let label = error.indexOf(':')
           return error.slice(label + 1)
-      })
-      errors.push('Password and Repeat Password must match');
+        })
+        errors.push('Password and Repeat Password must match');
         setErrors(errors)
       }
     }
@@ -165,12 +165,19 @@ const SignUpForm = () => {
             <option>WY</option>
           </select>
           <label htmlFor='image' className='file-input-label'>Profile Photo</label>
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            onChange={updateImage}
-          />
+          <label className='file-input-button'>
+            <i className="fa fa-2x fa-camera"></i>
+            {imgUrl && (
+              <i className="fa-solid fa-check"></i>
+            )}
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={updateImage}
+              className='file-input'
+            />
+          </label>
           <label htmlFor='bio'>About You</label>
           <textarea
             name="bio"

@@ -44,6 +44,18 @@ textarea {
 
 .file-input {
     margin-bottom: 8px;
+    display: none;
+}
+
+.file-input-button {
+    cursor: pointer;
+    margin: 5px 0px;
+}
+
+.fa-check {
+    color: #558B6E;
+    margin: 0px 10px;
+    font-size: 22px;
 }
 
 .radio-container {

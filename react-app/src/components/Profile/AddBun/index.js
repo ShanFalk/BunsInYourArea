@@ -98,14 +98,20 @@ function AddBunny() {
                     onChange={updateBio}
                 />
                 <label className="file-input-label" htmlFor="image">Image<span className='required'>*</span></label>
-                <input
-                    className="file-input"
-                    type="file"
-                    name="image"
-                    required
-                    accept="image/*"
-                    onChange={updateImage}
-                />
+                <label className="file-input-button">
+                    <i className="fa fa-2x fa-camera"></i>
+                    {imgUrl && (
+                        <i className="fa-solid fa-check"></i>
+                    )}
+                    <input
+                        className="file-input"
+                        type="file"
+                        name="image"
+                        required
+                        accept="image/*"
+                        onChange={updateImage}
+                    />
+                </label>
                 <legend>Adoptable?<span className='required'>*</span></legend>
                 <div className="radio-container">
                     <label htmlFor="adoptableNo">No</label>

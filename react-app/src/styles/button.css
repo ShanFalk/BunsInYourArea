@@ -5,7 +5,7 @@
     padding: 6px;
     width: fit-content;
 }
-
+/* demo, logout button */
 .yellow {
     border: 2px solid #d2bf55;
     background-color: #d2bf55;
@@ -16,7 +16,7 @@
     border: 2px solid #bba631;
     cursor: pointer;
 }
-
+/* submit button */
 .blue {
     border: 2px solid cornflowerblue;
     background-color: cornflowerblue;
@@ -28,7 +28,7 @@
     border: 2px solid #0047ab;
     cursor: pointer;
 }
-
+/* edit button */
 .pink {
     background-color: #af728e;
     border: 2px solid #af728e;
@@ -39,7 +39,7 @@
     border: 2px solid #704C5E;
     cursor: pointer;
 }
-
+/* delete button */
 .warning {
     background-color: #cb4154;
     border: 2px solid #cb4154;
@@ -50,7 +50,7 @@
     border: 2px solid #8d2e3a;
     cursor: pointer;
 }
-
+/* cancel button */
 .lavender {
     background-color: lavender;
     border: 2px solid lavender;
@@ -62,3 +62,14 @@
     border: 2px solid rgb(189, 189, 255);
     cursor: pointer;
 }
+
+/* input::-webkit-file-upload-button {
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    padding: 6px;
+    width: fit-content;
+    background-color: teal;
+    border: 2px solid teal;
+    margin-top: 5px;
+} */

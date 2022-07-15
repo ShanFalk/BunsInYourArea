@@ -44,7 +44,9 @@ function BunniesList() {
                                     )}
                                 </ul>
                             </Link>
-                            <LikesButton likes={likes} bunny={bunny} sessionUser={sessionUser} />
+                            {sessionUser && (
+                                <LikesButton likes={likes} bunny={bunny} sessionUser={sessionUser} />
+                            )}
                         </div>
                     )
                 })}

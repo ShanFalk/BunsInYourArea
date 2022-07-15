@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../index.css'
 import '../../styles/display.css'
 
@@ -15,6 +16,11 @@ function Splash() {
                 <p>
                     Buns in your area finds adoptable rabbits local to you!
                 </p>
+                <Link to='/home' className='no-decor'>
+                    <button className='button yellow'>
+                        See all bunnies
+                    </button>
+                </Link>
             </div>
             <div className='splash-video'>
             <iframe width="520" height="415"

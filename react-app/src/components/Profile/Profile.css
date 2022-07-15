@@ -26,6 +26,10 @@
     word-wrap: break-word;
 }
 
+.add-bun {
+    margin-bottom: 10px;
+}
+
 .review-form-container {
     display: flex;
     flex-direction: column;

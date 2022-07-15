@@ -5,7 +5,6 @@
 }
 
 .thumbnail {
-    width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,6 +12,7 @@
     border-radius: 10px;
     cursor: pointer;
     border: 2px solid cornflowerblue;
+    background-color: white;
 }
 
 .thumbnail-image {

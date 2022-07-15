@@ -17,7 +17,7 @@ function BunniesList() {
     useEffect(() => {
         dispatch(getLikes(sessionUser?.id))
 
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
     //TO DO: ADD BACK IN AFTER ADDING SEARCH FEATURE
     // const localBunnies = bunnies.filter((bunny) => {

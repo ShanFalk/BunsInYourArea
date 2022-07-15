@@ -69,6 +69,9 @@ def sign_up():
         if not image_url:
             return {'errors': ['Image: Invalid image type']}, 400
 
+    else:
+        image_url = 'https://mybunnybucket.s3.amazonaws.com/default-profile-pic.jpg'
+
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

@@ -5,7 +5,6 @@ from wtforms.validators import DataRequired, ValidationError
 
 def name_length_max(form, field):
     name = field.data
-    print('*'*50, name)
     if len(name) > 50:
         raise ValidationError('Name is too long')
 
@@ -15,9 +14,14 @@ def name_length_min(form, field):
         raise ValidationError('Name is too short')
 
 def breed_length_max(form, field):
-    name = field.data
-    if len(name) > 30:
+    breed = field.data
+    if len(breed) > 30:
         raise ValidationError('Breed is too long')
+
+def bio_length_max(form, field):
+    biography = field.data
+    if len(biography) > 500:
+        raise ValidationError('Biography is too long')
 
 class CreateBunny(FlaskForm):
 
@@ -26,7 +30,7 @@ class CreateBunny(FlaskForm):
     age = FloatField('age', validators=[DataRequired()])
     sex = StringField('sex', validators=[DataRequired()])
     breed = StringField('breed', validators=[DataRequired(), breed_length_max])
-    biography = TextAreaField('biography')
+    biography = TextAreaField('biography', validators=[bio_length_max])
     is_adoptable = BooleanField('is_adoptable')
 
 class UpdateBunny(FlaskForm):

@@ -59,6 +59,11 @@ def city_length_min(form, field):
     if len(city) < 2:
         raise ValidationError('City is too short')
 
+def bio_length_max(form, field):
+    biography = field.data
+    if len(biography) > 500:
+        raise ValidationError('Biography is too long')
+
 
 class SignUpForm(FlaskForm):
     firstname = StringField('firstname', validators=[DataRequired('Please provide a first name'), firstname_length_min, firstname_length_max])
@@ -67,6 +72,6 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired('Please provide a username'), username_exists, username_length_min, username_length_max])
     email = StringField('email', validators=[DataRequired('Please provide an email address'), user_exists, Email(message='Please provide a valid email address')])
     password = StringField('password', validators=[DataRequired('Please provide a password')])
-    biography = TextAreaField('biography')
+    biography = TextAreaField('biography', validators=[bio_length_max])
     city = StringField('city', validators=[DataRequired('Please provide a city'), city_length_max, city_length_min])
     state = StringField('state', validators=[DataRequired('Please provide a state')])

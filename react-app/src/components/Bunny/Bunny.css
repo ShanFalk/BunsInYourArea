@@ -19,6 +19,8 @@
     background-color: white;
     border-radius: 5px;
     padding-right: 40px;
+    inline-size: 450px;
+    overflow-wrap: break-word;
 }
 
 .org-name{

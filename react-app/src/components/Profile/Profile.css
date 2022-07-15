@@ -22,6 +22,8 @@
 .user-details {
     margin-left: 15px;
     width: 500px;
+    inline-size: 500px;
+    word-wrap: break-word;
 }
 
 .review-form-container {
@@ -43,6 +45,8 @@
 
 .review-container {
     margin-left: 15px;
+    inline-size: 500px;
+    overflow-wrap: break-word;
 }
 
 .user-profile-pic-small {

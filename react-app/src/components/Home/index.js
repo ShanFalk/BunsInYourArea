@@ -19,15 +19,18 @@ function BunniesList() {
 
     }, [dispatch])
 
-    const localBunnies = bunnies.filter((bunny) => {
-        return sessionUser.city === bunny.user.city && sessionUser.state === bunny.user.state;
-    })
+    //TO DO: ADD BACK IN AFTER ADDING SEARCH FEATURE
+    // const localBunnies = bunnies.filter((bunny) => {
+    //     return sessionUser.city === bunny.user.city && sessionUser.state === bunny.user.state;
+    // })
 
     return (
         <div>
-            <h1>Bunnies near {sessionUser.city}, {sessionUser.state}</h1>
+            {/* TO DO: ADD BACK IN AFTER ADDING SEARCH */}
+            {/* <h1>Bunnies near {sessionUser.city}, {sessionUser.state}</h1> */}
+            <h1>The Bunnies</h1>
             <div className='bunnies-container'>
-                {localBunnies.map((bunny) => {
+                {bunnies.map((bunny) => {
                     return (
                         <div key={bunny.id} className='thumbnail' >
                             <Link className='no-decor' to={`/bunnies/${bunny.id}`}>

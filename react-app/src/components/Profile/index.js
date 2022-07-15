@@ -6,6 +6,7 @@ import ReviewForm from './AddReview';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUser } from '../../store/user';
+import LikesList from './Likes';
 import './Profile.css'
 
 function Profile() {
@@ -28,7 +29,7 @@ function Profile() {
     return (
         <div className='profile'>
             <div className='user-profile-pic-container'>
-                <img className='user-profile-pic' src={user?.image_url}/>
+                <img className='user-profile-pic' src={user?.image_url} />
                 <h1>{user?.username}</h1>
             </div>
             <div className='user-details'>
@@ -36,11 +37,14 @@ function Profile() {
                 <p>{user?.biography}</p>
             </div>
             {sessionUser?.id === parseInt(userId) && (
-            <button className='button blue' onClick={openModal}><i class="fa-solid fa-plus"></i>Add a Bunny</button>
+                <>
+                    <button className='button blue add-bun' onClick={openModal}><i class="fa-solid fa-plus"></i>Add a Bunny</button>
+                    <LikesList sessionUser={sessionUser} />
+                </>
             )}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AddBunny setShowModal={setShowModal}/>
+                    <AddBunny setShowModal={setShowModal} />
                 </Modal>
             )}
             {sessionUser.id !== parseInt(userId) && (

@@ -12,14 +12,14 @@ function Review({review, sessionUser}) {
     }
 
     return (
-        <div className='review-container' key={review.id}>
-            <p>{review.rating}</p>
-            <p>{review.content}</p>
+        <div className='review-container' key={review?.id}>
+            <p>{review?.rating}</p>
+            <p>{review?.content}</p>
             <div className="reviewer-details">
-                <img className='user-profile-pic-small' alt="the user" src={review.reviewer.image_url} />
-                <p>{review.reviewer.username}</p>
+                <img className='user-profile-pic-small' alt="the user" src={review?.reviewer.image_url} />
+                <p>{review?.reviewer.username}</p>
             </div>
-            {sessionUser.id === review.reviewer.id && (
+            {sessionUser?.id === review?.reviewer.id && (
                 <button className='button pink' onClick={openModal}>Edit</button>
             )}
             {showModal && (

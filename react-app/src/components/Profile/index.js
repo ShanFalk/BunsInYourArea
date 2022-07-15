@@ -47,7 +47,7 @@ function Profile() {
                     <AddBunny setShowModal={setShowModal} />
                 </Modal>
             )}
-            {sessionUser.id !== parseInt(userId) && (
+            {sessionUser?.id && sessionUser?.id !== parseInt(userId) && (
                 <ReviewForm />
             )}
             <Reviews />

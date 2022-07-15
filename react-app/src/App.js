@@ -42,36 +42,47 @@ function App() {
       <NavBar />
       <div id='main-content'>
       <Switch>
+
         <Route path='/' exact={true}>
           <Splash />
         </Route>
+
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
           </ProtectedRoute>
+
           <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/home' exact={true} >
+
+        <Route path='/home' exact={true} >
           <BunniesList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/profile/:userId' exact={true}>
+        </Route>
+
+        <Route path='/profile/:userId' exact={true}>
           <Profile />
-        </ProtectedRoute>
-        <ProtectedRoute path='/bunnies/:bunId' exact={true}>
+        </Route>
+
+        <Route path='/bunnies/:bunId' exact={true}>
           <Bunny />
-        </ProtectedRoute>
+        </Route>
+
         <Route path='/about' exact={true}>
           <AboutMe />
         </Route>
+
         <Route>
         <NotFound />
         </Route>
+
       </Switch>
       </div>
       <Footer />

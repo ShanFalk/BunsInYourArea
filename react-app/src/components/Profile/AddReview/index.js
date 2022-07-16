@@ -27,14 +27,15 @@ function ReviewForm() {
         }
 
         const createdReview = await dispatch(createReview(payload))
-            .catch((async(res) => {
-                const data = await res.json();
+            .catch((async(data) => {
+                console.log(data.errors)
                 if (data && data.errors) setErrors(data.errors);
             }));
 
         if (createdReview) {
             setRating('')
             setContent('')
+            setErrors([])
         }
 
     }
@@ -43,8 +44,8 @@ function ReviewForm() {
         <div className="review-form-container">
             <h2 className="playfair">Tell us about your adoption experience!</h2>
             <form id='review-form' onSubmit={onSubmit}>
-            {errors.length > 0 && <ul className='errors'>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {errors.length > 0 && <ul className="no-list-style no-padding">
+                    {errors.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
                 </ul>}
                 <label htmlFor="rating">Rating</label>
                 <input

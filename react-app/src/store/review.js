@@ -55,10 +55,16 @@ export const updateReview = (payload) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            return;
+            throw(data);
         }
         dispatch(createOne(data));
         return data
+
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            throw (data);
+        }
     }
 }
 
@@ -84,11 +90,16 @@ export const createReview = (payload) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            return;
+            throw (data);
         }
-
         dispatch(createOne(data));
         return data
+
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            throw (data);
+        }
     }
 }
 

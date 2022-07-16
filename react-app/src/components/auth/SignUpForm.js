@@ -166,7 +166,7 @@ const SignUpForm = () => {
           </select>
           <label htmlFor='image' className='file-input-label'>Profile Photo</label>
           <label className='file-input-button'>
-            <i className="fa fa-2x fa-camera"></i>
+          <span className="button lavender image-span">Select image</span>
             {imgUrl && (
               <i className="fa-solid fa-check"></i>
             )}

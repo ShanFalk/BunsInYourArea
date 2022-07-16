@@ -11,9 +11,17 @@ function Review({review, sessionUser}) {
         setShowModal(true);
     }
 
+    let stars = [0, 1, 2, 3, 4, 5]
+
+
+
     return (
         <div className='review-container' key={review?.id}>
-            <p>{review?.rating}</p>
+            <div>
+            {stars.slice(0, review?.rating).map((star) => {
+                return <i class="fa-solid fa-star"></i>
+            })}
+            </div>
             <p>{review?.content}</p>
             <div className="reviewer-details">
                 <img className='user-profile-pic-small' alt="the user" src={review?.reviewer.image_url} />

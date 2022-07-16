@@ -50,7 +50,7 @@ function Profile() {
             {sessionUser?.id && sessionUser?.id !== parseInt(userId) && (
                 <ReviewForm />
             )}
-            <Reviews />
+            <Reviews username={user?.username}/>
         </div>
     )
 }

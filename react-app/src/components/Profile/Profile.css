@@ -30,6 +30,10 @@
     margin-bottom: 10px;
 }
 
+.reviews-div {
+    margin-top: 20px;
+}
+
 .review-form-container {
     display: flex;
     flex-direction: column;
@@ -48,7 +52,7 @@
 }
 
 .review-container {
-    margin-left: 15px;
+    margin: 0px 0px 30px 15px;
     inline-size: 500px;
     overflow-wrap: break-word;
 }
@@ -72,4 +76,8 @@
 .delete {
     display: flex;
     justify-content: flex-end;
+}
+
+.fa-star {
+    color: #d2bf55;
 }

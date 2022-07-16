@@ -41,7 +41,6 @@ function AddBunny() {
 
         let createdBunny = await dispatch(createBunny(payload))
             .catch(async(data) => {
-                console.log(data.errors)
             if (data && data.errors) setErrors(data.errors);
         });
 
@@ -99,7 +98,7 @@ function AddBunny() {
                 />
                 <label className="file-input-label" htmlFor="image">Image<span className='required'>*</span></label>
                 <label className="file-input-button">
-                    <i className="fa fa-2x fa-camera"></i>
+                    <span className="button lavender image-span">Select image</span>
                     {imgUrl && (
                         <i className="fa-solid fa-check"></i>
                     )}

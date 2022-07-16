@@ -23,8 +23,8 @@ function EditReview({ review, setShowModal }) {
         }
 
         const createdReview = await dispatch(updateReview(payload))
-            .catch((async(res) => {
-                const data = await res.json();
+            .catch((async(data) => {
+                console.log('THIS IS THE DATA', data)
                 if (data && data.errors) setErrors(data.errors);
             }));
 
@@ -44,8 +44,8 @@ function EditReview({ review, setShowModal }) {
         <div className="edit-container">
             <h2 className="playfair">Edit Review</h2>
             <form className='modal-form' onSubmit={onSubmit}>
-            {errors.length > 0 && <ul className='errors'>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {errors.length > 0 && <ul className='no-list-style no-padding'>
+                    {errors.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
                 </ul>}
                 <label htmlFor="rating">Rating</label>
                 <input

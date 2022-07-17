@@ -19,7 +19,10 @@ function AboutMe() {
                         After beginning my Software Engineering journey at App Academy, I thought about this idea more and more.
                         Wouldn't it be great to help people find adoptable rabbits in the area more easily?
                         Something that can help them decide if a rabbit is the right pet for them?
-                        Thus, Buns in your area was created! I hope visiting this website brings you as much joy as building it did for me.
+                        Thus, Buns in your area was created!
+                    </p>
+                    <p>
+                        I hope visiting this website brings you as much joy as building it did for me. <i className="fa-solid fa-heart purple"></i>
                     </p>
                 </div>
             </div>

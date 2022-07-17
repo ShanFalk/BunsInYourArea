@@ -4,11 +4,13 @@
 
 .form-container {
     margin: 25px;
+    display: flex;
+    justify-content: center;
 }
 
 .form-heading {
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 form {
@@ -19,6 +21,10 @@ form {
     box-shadow: 0px 0px 5px lightgray;
     width: 100%;
     border-radius: 10px;
+}
+
+.no-modal-styles {
+    max-width: 30%;
 }
 
 label {
@@ -36,6 +42,11 @@ textarea {
     width: 75%;
     height: 50px;
     resize: none;
+}
+
+select {
+    width: 75%;
+    max-width: 100%;
 }
 
 .file-input-label {

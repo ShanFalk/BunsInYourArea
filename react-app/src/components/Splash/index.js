@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../index.css'
 import '../../styles/display.css'
 
 function Splash() {
+    const [isVisible, setIsVisible] = useState(false)
+    console.log(isVisible)
+    useEffect(() => {
+        setIsVisible(true)
+    }, [])
+    console.log(isVisible)
     return (
-        <div className='two-col-grid'>
-            <div className='two-col-info'>
+        <div className={`two-col-grid`}>
+            <div className={`two-col-info hidden ${isVisible ? 'fade-in':''}`}>
                 <h1 className='playfair'>
                     There's somebun for everyone
                 </h1>
@@ -22,7 +28,7 @@ function Splash() {
                     </button>
                 </Link>
             </div>
-            <div className='splash-video'>
+            <div className={`splash-video hidden ${isVisible ? 'fade-in-slow':''}`}>
             <iframe width="520" height="415"
                 src="https://www.youtube.com/embed/FcwHMB2IhHQ?controls=0&autoplay=1&mute=1&loop=1&playlist=FcwHMB2IhHQ">
             </iframe>

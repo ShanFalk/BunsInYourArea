@@ -29,7 +29,7 @@ function Splash() {
                 </Link>
             </div>
             <div className={`splash-video hidden ${isVisible ? 'fade-in-slow':''}`}>
-            <iframe width="520" height="415"
+            <iframe title='bunny-behaviour' width="520" height="415"
                 src="https://www.youtube.com/embed/FcwHMB2IhHQ?controls=0&autoplay=1&mute=1&loop=1&playlist=FcwHMB2IhHQ">
             </iframe>
             </div>

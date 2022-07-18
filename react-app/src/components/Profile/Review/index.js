@@ -18,8 +18,8 @@ function Review({review, sessionUser}) {
     return (
         <div className='review-container' key={review?.id}>
             <div>
-            {stars.slice(0, review?.rating).map((star) => {
-                return <i class="fa-solid fa-star"></i>
+            {stars.slice(0, review?.rating).map((star, idx) => {
+                return <i key={idx} className="fa-solid fa-star"></i>
             })}
             </div>
             <p>{review?.content}</p>

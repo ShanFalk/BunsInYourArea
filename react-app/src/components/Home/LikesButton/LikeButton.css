@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 
-.likes-btn:hover {
+/* .likes-btn:hover {
     animation: wiggle 2s linear 1;
 }
 
@@ -41,7 +41,7 @@
     40%, 100% {
       transform: rotateZ(0);
     }
-  }
+  } */
 
 
 .likes-container {

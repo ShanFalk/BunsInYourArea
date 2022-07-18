@@ -18,7 +18,7 @@
   <li>Flask</li>
   <li>React</li>
   <li>Redux</li>
-  <li>AWS<li>
+  <li>AWS</li>
 </ul>
 
 <h2>Usage</h2>

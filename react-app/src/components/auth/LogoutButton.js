@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../store/session';
+import { removeAllLikes } from '../../store/like';
 import '../../styles/button.css'
 
 const LogoutButton = () => {
@@ -10,6 +11,7 @@ const LogoutButton = () => {
 
   const onLogout = async (e) => {
     await dispatch(logout())
+    .then(async () => await dispatch(removeAllLikes()))
       .then(() => history.push('/login'))
   };
 

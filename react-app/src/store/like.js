@@ -1,6 +1,7 @@
 const ADD_LIKE = 'like/ADD_LIKE'
 const GET_LIKES = 'like/GET_LIKES'
 const REMOVE_LIKE = 'like/REMOVE_LIKE'
+const REMOVE_LIKES = 'like/REMOVE_LIKES'
 
 const retreiveAll = (likes) => ({
     type: GET_LIKES,
@@ -16,6 +17,14 @@ const removeOne = (bunId) => ({
     type: REMOVE_LIKE,
     bunId
 })
+
+const removeAll = () => ({
+    type: REMOVE_LIKES
+})
+
+export const removeAllLikes = () => async (dispatch) => {
+    dispatch(removeAll())
+}
 
 export const unlike = (likeId) => async (dispatch) => {
     const response = await fetch(`/api/likes/${likeId}`, {
@@ -71,6 +80,8 @@ export default function likesReducer(state = initialState, action) {
             const newState = {...state}
             delete newState[action.bunId.bunny_id]
             return newState
+        case REMOVE_LIKES:
+            return {}
         default:
             return state;
     }

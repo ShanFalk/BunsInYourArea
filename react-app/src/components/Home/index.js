@@ -15,7 +15,9 @@ function BunniesList() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getLikes(sessionUser?.id))
+        if (sessionUser) {
+            dispatch(getLikes(sessionUser?.id))
+        }
 
     }, [dispatch, sessionUser])
 

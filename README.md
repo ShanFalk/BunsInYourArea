@@ -23,3 +23,4 @@
 
 <h2>Usage</h2>
 <p>Interested users can signup and login in, or login as a Demo user to try out the website.</p>
+<p>Once logged in, the user is directed to the home page where they have a news feed of all the bunnies on the site.</p>

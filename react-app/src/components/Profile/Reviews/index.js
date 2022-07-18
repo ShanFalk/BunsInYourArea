@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Review from "../Review";
@@ -19,7 +19,7 @@ function Reviews({ username }) {
 
     return (
         <div className="reviews-div">
-            <h2 className="playfair reviews-heading">What users are saying about {username} ({average} <i class="fa-solid fa-star"></i>)</h2>
+            <h2 className="playfair reviews-heading">What users are saying about {username} ({average} <i className="fa-solid fa-star"></i>)</h2>
             {myReviews.map((review) => {
                 return (
                     <Review key={review.id} review={review} sessionUser={sessionUser} />

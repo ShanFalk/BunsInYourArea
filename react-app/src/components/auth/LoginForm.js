@@ -34,35 +34,37 @@ const LoginForm = () => {
 
   return (
     <div className='form-container'>
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div className='required' key={ind}>{error}</div>
-        ))}
-      </div>
-      <h2 className='playfair'>Log in</h2>
-      <div>
-        <label htmlFor='email'>Email<span className='required'>*</span></label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password<span className='required'>*</span></label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-      </div>
-      <button className='button blue' type='submit'>Login</button>
-    </form>
+      <form className='no-modal-styles' onSubmit={onLogin}>
+        <div>
+          {errors.map((error, ind) => (
+            <div className='required' key={ind}>{error}</div>
+          ))}
+        </div>
+        <h2 className='playfair'>Log in</h2>
+        <div>
+          <div>
+            <label htmlFor='email'>Email<span className='required'>*</span></label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <label htmlFor='password'>Password<span className='required'>*</span></label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <button className='button blue' type='submit'>Login</button>
+        </div>
+      </form>
     </div>
   );
 };

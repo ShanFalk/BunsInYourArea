@@ -21,6 +21,7 @@
     padding-right: 40px;
     inline-size: 450px;
     overflow-wrap: break-word;
+    justify-self: center;
 }
 
 .org-name{
@@ -37,6 +38,6 @@
 .edit-bun-buttons {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 30%;
     margin-top: 10px;
 }

@@ -5,11 +5,10 @@
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
 }
 
 .about-pic {
-    justify-self: flex-end;
+    justify-self: center;
 }
 
 .headshot {
@@ -19,7 +18,14 @@
 }
 
 .about-text {
-    justify-self: flex-start;
+    justify-self: center;
     align-self: center;
     width: 75%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.purple {
+    color: rgb(168, 168, 253);
 }

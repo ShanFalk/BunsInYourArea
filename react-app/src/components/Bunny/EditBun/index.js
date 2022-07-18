@@ -10,7 +10,7 @@ function EditBunny({ bunny, endEdit }) {
     const [sex, setSex] = useState(bunny?.sex);
     const [breed, setBreed] = useState(bunny?.breed);
     const [bio, setBio] = useState(bunny?.biography);
-    const [imgUrl, setImgUrl] = useState(bunny?.image_url);
+    const [imgUrl, setImgUrl] = useState(null);
     const [isAdoptable, setIsAdoptable] = useState(bunny?.is_adoptable);
 
 
@@ -62,7 +62,7 @@ function EditBunny({ bunny, endEdit }) {
     return (
         <div className="edit-bun-container">
             <h2 className="playfair">Update {bunny.name}</h2>
-            <form onSubmit={onSubmit}>
+            <form className='no-modal-styles' onSubmit={onSubmit}>
                 {errors.length > 0 && <ul className='required no-list-style'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
@@ -106,6 +106,11 @@ function EditBunny({ bunny, endEdit }) {
                     onChange={updateBio}
                 />
                 <label className="file-input-label" htmlFor="image">Image</label>
+                <label className='file-input-button'>
+                    <span className="button lavender image-span">Select image</span>
+            {imgUrl && (
+              <i className="fa-solid fa-check"></i>
+            )}
                 <input
                     type="file"
                     name="image"
@@ -113,6 +118,7 @@ function EditBunny({ bunny, endEdit }) {
                     onChange={updateImage}
                     className="file-input"
                 />
+                </label>
                 <legend>Adoptable?</legend>
                 <div className="radio-container">
                     <label htmlFor="adoptableNo">No</label>

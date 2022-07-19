@@ -102,6 +102,9 @@ function AddBunny() {
                     {imgUrl && (
                         <i className="fa-solid fa-check"></i>
                     )}
+                    {!imgUrl && (
+                        <span className="required img-msg">Please select an image</span>
+                    )}
                     <input
                         className="file-input"
                         type="file"

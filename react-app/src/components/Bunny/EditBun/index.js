@@ -66,7 +66,7 @@ function EditBunny({ bunny, endEdit }) {
                 {errors.length > 0 && <ul className='required no-list-style'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Name<span className='required'>*</span></label>
                 <input
                     type="text"
                     name="name"
@@ -74,7 +74,7 @@ function EditBunny({ bunny, endEdit }) {
                     value={name}
                     onChange={updateName}
                 />
-                <label htmlFor="age">Age</label>
+                <label htmlFor="age">Age<span className='required'>*</span></label>
                 <input
                     type="number"
                     name="age"
@@ -86,12 +86,12 @@ function EditBunny({ bunny, endEdit }) {
                     required
                     onChange={updateAge}
                 />
-                <label htmlFor="sex">Sex</label>
+                <label htmlFor="sex">Sex<span className='required'>*</span></label>
                 <select name="sex" onChange={updateSex} value={sex} required>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>
-                <label htmlFor="breed">Breed</label>
+                <label htmlFor="breed">Breed<span className='required'>*</span></label>
                 <input
                     type="text"
                     name="breed"
@@ -105,7 +105,7 @@ function EditBunny({ bunny, endEdit }) {
                     value={bio}
                     onChange={updateBio}
                 />
-                <label className="file-input-label" htmlFor="image">Image</label>
+                <label className="file-input-label" htmlFor="image">Image<span className='required'>*</span></label>
                 <label className='file-input-button'>
                     <span className="button lavender image-span">Select image</span>
             {imgUrl && (
@@ -119,7 +119,7 @@ function EditBunny({ bunny, endEdit }) {
                     className="file-input"
                 />
                 </label>
-                <legend>Adoptable?</legend>
+                <legend>Adoptable?<span className='required'>*</span></legend>
                 <div className="radio-container">
                     <label htmlFor="adoptableNo">No</label>
                     <input

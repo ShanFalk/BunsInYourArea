@@ -37,9 +37,9 @@ class UpdateBunny(FlaskForm):
 
     id = IntegerField("id")
     user_id = IntegerField('user_id', validators=[DataRequired()])
-    name = StringField('name', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired(), name_length_max, name_length_min])
     age = FloatField('age', validators=[DataRequired()])
     sex = StringField('sex', validators=[DataRequired()])
-    breed = StringField('breed', validators=[DataRequired()])
-    biography = TextAreaField('biography', validators=[DataRequired()])
+    breed = StringField('breed', validators=[DataRequired(), breed_length_max])
+    biography = TextAreaField('biography', validators=[bio_length_max])
     is_adoptable = BooleanField('is_adoptable')

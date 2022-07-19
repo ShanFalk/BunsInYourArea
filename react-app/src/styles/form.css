@@ -84,3 +84,8 @@ select {
 .no-padding {
     padding: 0;
 }
+
+.img-msg {
+    font-size: 14px;
+    margin-left: 5px;
+}

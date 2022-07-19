@@ -47,7 +47,7 @@ function EditReview({ review, setShowModal }) {
             {errors.length > 0 && <ul className='no-list-style no-padding'>
                     {errors.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
                 </ul>}
-                <label htmlFor="rating">Rating</label>
+                <label htmlFor="rating">Rating<span className='required'>*</span></label>
                 <input
                     type="number"
                     name="rating"
@@ -57,7 +57,7 @@ function EditReview({ review, setShowModal }) {
                     required
                     onChange={updateRating}
                 />
-                <label htmlFor="review">Review</label>
+                <label htmlFor="review">Review<span className='required'>*</span></label>
                 <textarea
                     name="review"
                     value={content}

@@ -5,11 +5,9 @@ import '../../styles/display.css'
 
 function Splash() {
     const [isVisible, setIsVisible] = useState(false)
-    console.log(isVisible)
     useEffect(() => {
         setIsVisible(true)
     }, [])
-    console.log(isVisible)
     return (
         <div className={`two-col-grid`}>
             <div className={`two-col-info hidden ${isVisible ? 'fade-in':''}`}>

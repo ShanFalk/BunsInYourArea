@@ -28,7 +28,6 @@ function ReviewForm() {
 
         const createdReview = await dispatch(createReview(payload))
             .catch((async(data) => {
-                console.log(data.errors)
                 if (data && data.errors) setErrors(data.errors);
             }));
 

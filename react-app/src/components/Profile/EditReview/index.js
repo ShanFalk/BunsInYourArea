@@ -24,7 +24,6 @@ function EditReview({ review, setShowModal }) {
 
         const createdReview = await dispatch(updateReview(payload))
             .catch((async(data) => {
-                console.log('THIS IS THE DATA', data)
                 if (data && data.errors) setErrors(data.errors);
             }));
 

@@ -17,6 +17,8 @@ import NotFound from './components/NotFound';
 import Splash from './components/Splash';
 import Footer from './components/Footer';
 import AboutMe from './components/About';
+import SearchResults from './components/Search/SearchResults';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -65,6 +67,10 @@ function App() {
 
         <Route path='/home' exact={true} >
           <BunniesList />
+        </Route>
+
+        <Route path='/search' >
+          <SearchResults />
         </Route>
 
         <Route path='/profile/:userId' exact={true}>

@@ -42,7 +42,7 @@ function ReviewForm() {
     return (
         <div className="review-form-container">
             <h2 className="playfair">Tell us about your adoption experience!</h2>
-            <form id='review-form' onSubmit={onSubmit}>
+            <form id='review-form' className="form" onSubmit={onSubmit}>
             {errors.length > 0 && <ul className="no-list-style no-padding">
                     {errors.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
                 </ul>}

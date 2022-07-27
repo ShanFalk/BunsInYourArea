@@ -12,6 +12,7 @@ function SearchBar() {
 
         if (search) {
             history.push(`/search?query=${search}`)
+            setSearch("");
         }
         else setErrors(['Please enter a search term'])
     }
@@ -20,8 +21,10 @@ function SearchBar() {
         {errors.length > 0 && (
             <p>{errors[0]}</p>
         )}
-        <input className="search-bar" type="search" onChange={(e) => setSearch(e.target.value)} onSubmit={onSearch} placeholder="Search for a bunny..."/>
-        <button className="button" onClick={onSearch}><i class="fa-solid fa-magnifying-glass"></i></button>
+        <form onSubmit={onSearch}>
+            <input className="search-bar" value={search} type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search for a bunny..."/>
+            <button className="button blue"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
        </div>
     )
 }

@@ -23,7 +23,9 @@ function SearchResults() {
                 bunny.breed.toLowerCase().includes(term) ||
                 bunny.biography.toLowerCase().includes(term)||
                 bunny.sex.toLowerCase().includes(term) ||
-                bunny.user.username.toLowerCase().includes(term)) {
+                bunny.user.username.toLowerCase().includes(term) ||
+                bunny.user.city.toLowerCase().includes(term) ||
+                bunny.user.state.toLowerCase().includes(term)) {
 
                     return true;
 

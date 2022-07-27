@@ -24,7 +24,6 @@ function EditReview({ review, setShowModal }) {
 
         const createdReview = await dispatch(updateReview(payload))
             .catch((async(data) => {
-                console.log('THIS IS THE DATA', data)
                 if (data && data.errors) setErrors(data.errors);
             }));
 
@@ -43,7 +42,7 @@ function EditReview({ review, setShowModal }) {
     return (
         <div className="edit-container">
             <h2 className="playfair">Edit Review</h2>
-            <form className='modal-form' onSubmit={onSubmit}>
+            <form className='form modal-form' onSubmit={onSubmit}>
             {errors.length > 0 && <ul className='no-list-style no-padding'>
                     {errors.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
                 </ul>}

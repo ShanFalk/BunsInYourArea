@@ -5,11 +5,9 @@ import '../../styles/display.css'
 
 function Splash() {
     const [isVisible, setIsVisible] = useState(false)
-    console.log(isVisible)
     useEffect(() => {
         setIsVisible(true)
     }, [])
-    console.log(isVisible)
     return (
         <div className={`two-col-grid`}>
             <div className={`two-col-info hidden ${isVisible ? 'fade-in':''}`}>
@@ -22,11 +20,11 @@ function Splash() {
                 <p>
                     Buns in your area finds adoptable rabbits local to you!
                 </p>
-                <Link to='/home' className='no-decor'>
+                {/* <Link to='/home' className='no-decor'>
                     <button className='button yellow'>
                         See all bunnies
                     </button>
-                </Link>
+                </Link> */}
             </div>
             <div className={`splash-video hidden ${isVisible ? 'fade-in-slow':''}`}>
             <iframe title='bunny-behaviour' width="520" height="415"

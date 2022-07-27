@@ -34,7 +34,7 @@ const LoginForm = () => {
 
   return (
     <div className='form-container'>
-      <form className='no-modal-styles' onSubmit={onLogin}>
+      <form className='form no-modal-styles' onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
             <div className='required' key={ind}>{error}</div>

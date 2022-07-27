@@ -62,7 +62,7 @@ function EditBunny({ bunny, endEdit }) {
     return (
         <div className="edit-bun-container">
             <h2 className="playfair">Update {bunny.name}</h2>
-            <form className='no-modal-styles' onSubmit={onSubmit}>
+            <form className='form no-modal-styles' onSubmit={onSubmit}>
                 {errors.length > 0 && <ul className='required no-list-style'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}

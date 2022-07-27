@@ -52,7 +52,7 @@ function AddBunny() {
     return (
         <div>
             <h2 className="playfair">Add a New Bunny</h2>
-            <form className='modal-form' onSubmit={onSubmit}>
+            <form className='form modal-form' onSubmit={onSubmit}>
                 {errors.length > 0 && <ul className='required no-list-style'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}

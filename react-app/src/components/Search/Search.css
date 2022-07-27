@@ -1,0 +1,10 @@
+.search-div {
+    width: 40%;
+}
+
+.search-bar {
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    margin-right: 4px;
+}

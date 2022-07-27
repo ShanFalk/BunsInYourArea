@@ -20,11 +20,11 @@ function Splash() {
                 <p>
                     Buns in your area finds adoptable rabbits local to you!
                 </p>
-                <Link to='/home' className='no-decor'>
+                {/* <Link to='/home' className='no-decor'>
                     <button className='button yellow'>
                         See all bunnies
                     </button>
-                </Link>
+                </Link> */}
             </div>
             <div className={`splash-video hidden ${isVisible ? 'fade-in-slow':''}`}>
             <iframe title='bunny-behaviour' width="520" height="415"

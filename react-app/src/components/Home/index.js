@@ -11,7 +11,7 @@ function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
     const sessionUser = useSelector(state => state.session.user)
     const likes = useSelector(state => state.likes)
-    const bunnies = Object.values(bunnyState)
+    const bunnyValues = Object.values(bunnyState)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -21,16 +21,13 @@ function BunniesList() {
 
     }, [dispatch, sessionUser])
 
-    //TO DO: ADD BACK IN AFTER ADDING SEARCH FEATURE
-    // const localBunnies = bunnies.filter((bunny) => {
-    //     return sessionUser.city === bunny.user.city && sessionUser.state === bunny.user.state;
-    // })
+    const bunnies = bunnyValues.filter((bunny) => {
+        return sessionUser?.city === bunny?.user.city && sessionUser?.state === bunny?.user.state;
+    })
 
     return (
         <div>
-            {/* TO DO: ADD BACK IN AFTER ADDING SEARCH */}
-            {/* <h1>Bunnies near {sessionUser.city}, {sessionUser.state}</h1> */}
-            <h1>The Bunnies</h1>
+            <h1>Bunnies near {sessionUser?.city}, {sessionUser?.state}</h1>
             <div className='bunnies-container'>
                 {bunnies.map((bunny) => {
                     return (

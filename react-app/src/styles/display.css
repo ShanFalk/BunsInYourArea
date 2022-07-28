@@ -24,20 +24,6 @@
     color: #558B6E;
 }
 
-/* .hidden {
-    opacity: 0;
-}
-
-.fade-in {
-    opacity: 1;
-    transition: opacity 3s;
-}
-
-.fade-in-slow {
-    opacity: 1;
-    transition: opacity 5s;
-} */
-
 .fade-in-text {
     animation: fadeInFast 5s;
 }

@@ -62,14 +62,3 @@
     border: 2px solid rgb(189, 189, 255);
     cursor: pointer;
 }
-
-/* input::-webkit-file-upload-button {
-    border-radius: 15px;
-    text-decoration: none;
-    color: white;
-    padding: 6px;
-    width: fit-content;
-    background-color: teal;
-    border: 2px solid teal;
-    margin-top: 5px;
-} */

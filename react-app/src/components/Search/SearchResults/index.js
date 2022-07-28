@@ -44,7 +44,7 @@ function SearchResults() {
         <div>
             <h1>Results for "{results}"</h1>
             {bunnies.length === 0 && (
-                <div className="no-search-results">
+                <div className="simple-center-div">
                     <h3>No bunnies found!</h3>
                     <p>Try making another search like "lop" or "sweet"</p>
                 </div>

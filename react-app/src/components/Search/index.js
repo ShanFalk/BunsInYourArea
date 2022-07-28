@@ -23,7 +23,7 @@ function SearchBar() {
         )}
         <form onSubmit={onSearch}>
             <input className="search-bar" value={search} type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search for a bunny..."/>
-            <button className="button blue"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button className="button blue"><i className="fa-solid fa-magnifying-glass"></i></button>
         </form>
        </div>
     )

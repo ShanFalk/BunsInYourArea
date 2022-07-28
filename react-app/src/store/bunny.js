@@ -139,7 +139,7 @@ export default function bunnyReducer(state = initialState, action) {
     switch (action.type) {
         case GET_BUNNIES:
             const bunnies = action.bunnies
-            return { ...state, ...bunnies }
+            return {'success':'success', ...state, ...bunnies }
         case POST_BUNNY:
             return { ...state, [action.bunny.id]: action.bunny }
         case DELETE_BUNNY:

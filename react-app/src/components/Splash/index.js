@@ -18,7 +18,7 @@ function Splash() {
                     Ready to meet your new BBF (Best Bunny Friend)?
                 </p>
                 <p>
-                    Buns in your area finds adoptable rabbits local to you!
+                    Buns In Your Area finds adoptable rabbits local to you!
                 </p>
                 {/* <Link to='/home' className='no-decor'>
                     <button className='button yellow'>

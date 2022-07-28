@@ -24,18 +24,22 @@
     color: #558B6E;
 }
 
-.hidden {
-    opacity: 0;
+.fade-in-text {
+    animation: fadeInFast 5s;
 }
 
-.fade-in {
-    opacity: 1;
-    transition: opacity 3s;
+@keyframes fadeInFast {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
-.fade-in-slow {
-    opacity: 1;
-    transition: opacity 5s;
+.fade-in-image {
+    animation: fadeInSlow 7s;
+}
+
+@keyframes fadeInSlow {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 .simple-center-div {

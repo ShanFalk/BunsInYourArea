@@ -8,7 +8,7 @@ function Footer() {
             <div className='footer-main'>
                 <div className='about'>
                     <p className='playfair'>About</p>
-                    <p><Link to='/about' className='no-decor nav-link-footer'>Buns in your area</Link></p>
+                    <p><Link to='/about' className='no-decor nav-link-footer'>Buns In Your Area</Link></p>
                     <p><a href='http://linkedin.com/in/shannon-falk-16097a83' target='_blank' rel='noreferrer' className='no-decor nav-link-footer'><i className="fa-brands fa-linkedin"></i> LinkedIn</a></p>
                     <p><a href='https://github.com/ShanFalk' target='_blank' rel='noreferrer' className='no-decor nav-link-footer'><i className="fa-brands fa-github"></i> Github</a></p>
                 </div>

@@ -77,6 +77,7 @@ export const signUp = (payload) => async (dispatch) => {
     username,
     email,
     password,
+    repeat,
     image_url,
     biography,
     city,
@@ -90,6 +91,7 @@ export const signUp = (payload) => async (dispatch) => {
   form.append('username', username)
   form.append('email', email)
   form.append('password', password)
+  form.append('repeat', repeat)
   form.append('image_url', image_url)
   form.append('biography', biography)
   form.append('city', city)

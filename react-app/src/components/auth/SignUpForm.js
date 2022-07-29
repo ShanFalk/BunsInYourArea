@@ -28,6 +28,7 @@ const SignUpForm = () => {
       username,
       email,
       password,
+      repeat: repeatPassword,
       image_url: imgUrl,
       biography: bio,
       city,
@@ -49,7 +50,6 @@ const SignUpForm = () => {
           let label = error.indexOf(':')
           return error.slice(label + 1)
         })
-        errors.push('Password and Repeat Password must match');
         setErrors(errors)
       }
     }

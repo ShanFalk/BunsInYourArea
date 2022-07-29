@@ -9,15 +9,12 @@ import tumbleweed from './tumbleweed.gif';
 
 
 function BunniesList() {
-    const bunnyState = useSelector(state => state.bunnies)
-    const sessionUser = useSelector(state => state.session.user)
+    const {isLoaded:isBunniesLoaded, ...bunnyState} = useSelector(state => state.bunnies)
+    const {isLoaded:isUserLoaded, user:sessionUser} = useSelector(state => state.session)
     const likes = useSelector(state => state.likes)
     const dispatch = useDispatch()
-    const [loaded, setLoaded] = useState(false)
 
     let bunnyValues = Object.values(bunnyState);
-    let successIndex = bunnyValues.indexOf('success');
-    bunnyValues.splice(successIndex, 1);
 
 
     useEffect(() => {
@@ -27,18 +24,17 @@ function BunniesList() {
 
     }, [dispatch, sessionUser]);
 
-    useEffect(() => {
-        if (bunnyState.success) {
-            setLoaded(true);
-        }
-    })
-
 
     const bunnies = bunnyValues.filter((bunny) => {
         return sessionUser?.city === bunny?.user.city && sessionUser?.state === bunny?.user.state;
     })
 
 
+    if (!isBunniesLoaded || !isUserLoaded) {
+        return null;
+    }
+
+    // console.log('HOME', {bunnies, isBunniesLoaded, sessionUser})
     return (
         <div>
             <h1>Bunnies near {sessionUser?.city}, {sessionUser?.state}</h1>
@@ -66,7 +62,7 @@ function BunniesList() {
                     })}
                 </div>
             )}
-            {!bunnies.length && loaded && (
+            {!bunnies.length && (
                 <div className='simple-center-div'>
                     <img src={tumbleweed} alt="a tumbleweed" />
                     <h3>It's kinda empty in here...</h3>

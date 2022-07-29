@@ -13,19 +13,21 @@ function SearchResults() {
     const likes = useSelector(state => state.likes)
     const sessionUser = useSelector(state => state.session.user)
     const bunnyState = useSelector(state => state.bunnies);
-    const bunnyValues = Object.values(bunnyState);
+    let bunnyValues = Object.values(bunnyState);
+    let successIndex = bunnyValues.indexOf('success');
+    bunnyValues.splice(successIndex, 1);
 
-    const bunnies = bunnyValues.filter((bunny) => {
+    const bunnies = bunnyValues?.filter((bunny) => {
 
         for (let term of query) {
-            if (bunny.name.toLowerCase().includes(term) ||
-                bunny.age.toString().includes(term) ||
-                bunny.breed.toLowerCase().includes(term) ||
-                bunny.biography.toLowerCase().includes(term) ||
-                bunny.sex.toLowerCase().includes(term) ||
-                bunny.user.username.toLowerCase().includes(term) ||
-                bunny.user.city.toLowerCase().includes(term) ||
-                bunny.user.state.toLowerCase().includes(term)) {
+            if (bunny?.name.toLowerCase().includes(term) ||
+                bunny?.age.toString().includes(term) ||
+                bunny?.breed.toLowerCase().includes(term) ||
+                bunny?.biography.toLowerCase().includes(term) ||
+                bunny?.sex.toLowerCase().includes(term) ||
+                bunny?.user.username.toLowerCase().includes(term) ||
+                bunny?.user.city.toLowerCase().includes(term) ||
+                bunny?.user.state.toLowerCase().includes(term)) {
 
                 return true;
 

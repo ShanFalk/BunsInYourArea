@@ -4,7 +4,7 @@ import './About.css'
 function AboutMe() {
     return (
         <div>
-            <h2 className="playfair about-title">About Buns in your area</h2>
+            <h2 className="playfair about-title">About Buns In Your Area</h2>
             <div className='about-grid'>
                 <div className='about-pic'>
                     <img className='headshot' alt="A headshot of the website software engineer" src={headshot} />

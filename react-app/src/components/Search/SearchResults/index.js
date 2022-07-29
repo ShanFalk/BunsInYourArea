@@ -12,10 +12,9 @@ function SearchResults() {
 
     const likes = useSelector(state => state.likes)
     const sessionUser = useSelector(state => state.session.user)
-    const bunnyState = useSelector(state => state.bunnies);
+    const { isLoaded, ...bunnyState } = useSelector(state => state.bunnies);
     let bunnyValues = Object.values(bunnyState);
-    let successIndex = bunnyValues.indexOf('success');
-    bunnyValues.splice(successIndex, 1);
+
 
     const bunnies = bunnyValues?.filter((bunny) => {
 
@@ -41,6 +40,10 @@ function SearchResults() {
         }
 
     }, [dispatch, sessionUser])
+
+    if (!isLoaded) {
+        return null;
+    }
 
     return (
         <div>

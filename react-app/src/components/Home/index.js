@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LikesButton from './LikesButton';
@@ -12,15 +12,26 @@ function BunniesList() {
     const bunnyState = useSelector(state => state.bunnies)
     const sessionUser = useSelector(state => state.session.user)
     const likes = useSelector(state => state.likes)
-    const bunnyValues = Object.values(bunnyState)
     const dispatch = useDispatch()
+    const [loaded, setLoaded] = useState(false)
+
+    let bunnyValues = Object.values(bunnyState);
+    let successIndex = bunnyValues.indexOf('success');
+    bunnyValues.splice(successIndex, 1);
+
 
     useEffect(() => {
         if (sessionUser) {
             dispatch(getLikes(sessionUser?.id))
         }
 
-    }, [dispatch, sessionUser])
+    }, [dispatch, sessionUser]);
+
+    useEffect(() => {
+        if (bunnyState.success) {
+            setLoaded(true);
+        }
+    })
 
 
     const bunnies = bunnyValues.filter((bunny) => {
@@ -55,7 +66,7 @@ function BunniesList() {
                     })}
                 </div>
             )}
-            {!bunnies.length && (
+            {!bunnies.length && loaded && (
                 <div className='simple-center-div'>
                     <img src={tumbleweed} alt="a tumbleweed" />
                     <h3>It's kinda empty in here...</h3>

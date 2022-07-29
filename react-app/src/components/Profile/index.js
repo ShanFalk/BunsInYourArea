@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUser } from '../../store/user';
 import LikesList from './Likes';
+import { clearUser } from '../../store/user';
 import './Profile.css'
 
 function Profile() {
@@ -18,7 +19,12 @@ function Profile() {
     const id = parseInt(userId)
 
     useEffect(() => {
-        dispatch(getUser(id))
+        //on mount
+        dispatch(getUser(id));
+        //on unmount
+        return () => {
+            dispatch(clearUser());
+        }
     }, [id])
 
     const openModal = (e) => {

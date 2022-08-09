@@ -10,5 +10,6 @@ flask seed undo
 pipenv i
 nstall --dev -r dev-requirements.txt && pipenv ins
 tall -r requirements.txt
+pipenv lock -r > requirements.txt (updates the contents of requirements.txt)
 heroku run -a HEROKU_APP_NAME flask seed all
 heroku run -a HEROKU_APP_NAME flask seed undo

@@ -18,6 +18,7 @@ import Splash from './components/Splash';
 import Footer from './components/Footer';
 import AboutMe from './components/About';
 import SearchResults from './components/Search/SearchResults';
+import Chat from './components/Chat';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +69,10 @@ function App() {
         <Route path='/home' exact={true} >
           <BunniesList />
         </Route>
+
+        <ProtectedRoute path='/messages' exact={true}>
+          <Chat />
+        </ProtectedRoute>
 
         <Route path='/search' >
           <SearchResults />

@@ -1,12 +1,13 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user, login_manager
 from app.models import User, Like
 
 user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-@login_required
+#login_required not working properly, commented out for now
+# @login_required
 def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}

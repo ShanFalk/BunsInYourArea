@@ -20,6 +20,7 @@ import AboutMe from './components/About';
 import SearchResults from './components/Search/SearchResults';
 import Chat from './components/Chat';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();

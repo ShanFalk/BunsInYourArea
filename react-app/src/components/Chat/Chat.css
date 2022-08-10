@@ -1,0 +1,16 @@
+.chat-grid {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.chat-grid-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-grid-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}

@@ -1,4 +1,5 @@
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room, leave_room, send
+# from flask import request
 import os
 
 # Setting up Cross Origin Resource Sharing for both prod and dev
@@ -22,4 +23,21 @@ socketio = SocketIO(cors_allowed_origins=origins);
 #No return statement; data sent with emit or send functions
 @socketio.on("chat")
 def handle_chat(data):
-    emit("chat", data, broadcast=True)
+    room = data['recipient']
+    emit("chat", data, broadcast=True, to=room)
+
+#Event handler for 'join' events
+#Assigning each client to a room with their username
+@socketio.on("join")
+def on_join(data):
+    username = data['username']
+    room = data['username']
+    join_room(room)
+    send(username + ' has entered the room.', to=room)
+
+@socketio.on("leave")
+def on_leave(data):
+    username = data['username']
+    room = data['username']
+    leave_room(room)
+    send(username + ' has left the room.', to=room)

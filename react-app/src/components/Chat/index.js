@@ -31,7 +31,7 @@ const Chat = () => {
     const sendChat = (e) => {
         e.preventDefault()
         //emit message, first arg must match backend, second arg is the data we want to send
-        socket.emit("chat", {user: user.username, msg: chatInput });
+        socket.emit("chat", {user: sessionUser.username, msg: chatInput });
         //clear the input field after the message is sent
         setChatInput("");
     }
@@ -44,7 +44,7 @@ const Chat = () => {
                 <form onSubmit={sendChat}>
                     <input
                         value ={chatInput}
-                        onChange={updateChatInput}
+                        onChange={setChatInput}
                     />
                     <button type="submit">Send</button>
                 </form>

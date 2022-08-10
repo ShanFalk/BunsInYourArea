@@ -50,6 +50,9 @@ const NavBar = () => {
           <NavLink to={`/profile/${sessionUser.id}`} exact={true} className='nav-link no-decor'>
             Profile
           </NavLink>
+          <NavLink to='/messages' className='button blue'>
+          <i className="fa-regular fa-envelope"></i>
+          </NavLink>
           <LogoutButton />
           </div>
           </>

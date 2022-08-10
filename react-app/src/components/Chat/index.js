@@ -10,6 +10,7 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     //control form input
     const [chatInput, setChatInput] = useState("");
+    console.log(chatInput)
     //retrieve user info from redux store
     const sessionUser = useSelector(state => state.session.user);
 
@@ -28,6 +29,10 @@ const Chat = () => {
         })
     }, []);
 
+    const udpateChatInput = (e) => {
+        setChatInput(e.target.value)
+    }
+
     const sendChat = (e) => {
         e.preventDefault()
         //emit message, first arg must match backend, second arg is the data we want to send
@@ -44,7 +49,7 @@ const Chat = () => {
                 <form onSubmit={sendChat}>
                     <input
                         value ={chatInput}
-                        onChange={setChatInput}
+                        onChange={udpateChatInput}
                     />
                     <button type="submit">Send</button>
                 </form>

@@ -16,10 +16,10 @@ socketio = SocketIO(cors_allowed_origins=origins);
 #optional callback that confirms message was received by the client
 #--this might not work b/c in the docs it says callbacks are not invoked
 # for broadcast messages
-def ack():
-    print("message was received!")
+# def ack():
+#     print("message was received!")
 #Event handler for 'chat' events --must match frontend value--
 #No return statement; data sent with emit or send functions
 @socketio.on("chat")
 def handle_chat(data):
-    emit("chat", data, broadcast=True, callback=ack)
+    emit("chat", data, broadcast=True)

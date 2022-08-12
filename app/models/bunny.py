@@ -21,6 +21,10 @@ class Bunny(db.Model):
     user = db.relationship("User", back_populates="bunnies")
     likes = db.relationship("Like", back_populates="bunny")
 
+# Function that returns data as a dictionary and takes in
+# additional args such as joined loads.
+# in this example, the key of kwargs would be user and the collection is bunny.user
+# from the joined load
     def to_dict(self, **kwargs):
         out = {
             'id': self.id,

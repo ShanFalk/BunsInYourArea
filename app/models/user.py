@@ -25,6 +25,9 @@ class User(db.Model, UserMixin):
     reviewer_user = db.relationship("Review", foreign_keys="Review.reviewer_id", back_populates="reviewer", lazy="dynamic")
     reviewee_user = db.relationship("Review", foreign_keys="Review.reviewee_id", back_populates="reviewee", lazy="dynamic")
     likes = db.relationship("Like", back_populates="user")
+    creator_user = db.relationship("Conversation", foreign_keys="Conversation.creator_id", back_populates="creator", lazy="dynamic")
+    participant_user = db.relationship("Conversation", foreign_keys="Conversation.participant_id", back_populates="participant", lazy="dynamic")
+    messages = db.relationship("Message", back_populates="user")
 
     @property
     def password(self):

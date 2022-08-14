@@ -38,7 +38,7 @@ def add_bunny():
         )
         db.session.add(new_bunny)
         db.session.commit()
-
+        #querying the pseudo column 'user' based on the relationship
         bunny = Bunny.query.options(joinedload('user')).get(new_bunny.id)
         return bunny.to_dict(user=bunny.user)
     print({'errors': form.errors})

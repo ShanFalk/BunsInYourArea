@@ -12,6 +12,7 @@ from .api.auth_routes import auth_routes
 from .api.bunny_routes import bunny_routes
 from .api.review_routes import review_routes
 from .api.like_routes import like_routes
+from .api.conversation_routes import conversation_routes
 
 from .seeds import seed_commands
 
@@ -38,6 +39,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(bunny_routes, url_prefix='/api/bunnies')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
+app.register_blueprint(conversation_routes, url_prefix='/api/conversations')
 db.init_app(app)
 Migrate(app, db)
 #init app with socket instance

@@ -2,6 +2,7 @@ import { io } from 'socket.io-client';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../../store/users';
+import Conversations from './Conversations';
 import './Chat.css';
 
 //socket variable
@@ -65,11 +66,13 @@ const Chat = () => {
         <div className='chat-grid'>
             {/* user list part of grid */}
             <div className='chat-grid-left'>
-                {users.map((user, idx) => (
+                <h3>Direct Messages</h3>
+                {/* {users.map((user, idx) => (
                     <div key={idx} onClick={() => setRecipient(user.username)}>
                         {user.username}
                     </div>
-                ))}
+                ))} */}
+                <Conversations />
             </div>
             {/* chat part of grid */}
             <div className='chat-grid-right'>

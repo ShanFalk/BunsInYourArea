@@ -1,5 +1,12 @@
 const GET_CONVERSATIONS = '/conversation/GET_CONVERSATIONS';
 
+const retrieveAll = (conversations) => ({
+    type: GET_CONVERSATIONS,
+    conversations
+});
+
+
+
 export const getAllConversations = (id) => async (dispatch) => {
     const response = await fetch (`/api/users/${id}/conversations`)
 

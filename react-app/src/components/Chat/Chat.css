@@ -6,6 +6,7 @@
 .chat-grid-left {
     display: flex;
     flex-direction: column;
+    border-right: 1px solid lightgray;
 }
 
 .chat-grid-right {
@@ -13,4 +14,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+}
+
+.convo-container {
+    display: flex;
+}
+
+.chat-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
 }

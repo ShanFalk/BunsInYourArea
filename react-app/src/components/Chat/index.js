@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../../store/users';
 import Conversations from './Conversations';
+import Messages from './Messages';
 import './Chat.css';
 
 //socket variable
@@ -77,9 +78,7 @@ const Chat = () => {
             {/* chat part of grid */}
             <div className='chat-grid-right'>
                 <div>
-                    {messages.map((message, idx) => (
-                        <div key={idx}>{`${message.user}: ${message.msg}`}</div>
-                    ))}
+                    <Messages />
                 </div>
                 <div>
                     <form onSubmit={sendChat}>

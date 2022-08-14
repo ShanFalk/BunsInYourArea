@@ -12,8 +12,8 @@
 .chat-grid-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-end;
+    margin: 21px;
 }
 
 .convo-container {
@@ -25,4 +25,17 @@
     height: 50px;
     border-radius: 50%;
     margin-right: 15px;
+}
+
+.msg-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-container p {
+    margin: 0;
+}
+
+.message {
+    color: gray;
 }

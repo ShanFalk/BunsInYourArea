@@ -45,5 +45,4 @@ def user_conversations(id):
         join(user_alias2, Conversation.participant).\
         filter(or_(Conversation.creator_id == id, Conversation.participant_id == id))
 
-    print('*'*50, {conversation.participant for conversation in conversations})
     return {conversation.id: conversation.to_dict(creator=conversation.creator, participant=conversation.participant) for conversation in conversations}

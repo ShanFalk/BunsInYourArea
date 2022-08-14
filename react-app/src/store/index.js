@@ -6,6 +6,7 @@ import reviewReducer from './review';
 import likesReducer from './like';
 import userReducer from './user';
 import conversationReducer from './conversation';
+import messageReducer from './message';
 import usersReducer from './users';
 
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   likes: likesReducer,
   user: userReducer,
   conversations: conversationReducer,
+  messages: messageReducer,
   users: usersReducer,
 });
 

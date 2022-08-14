@@ -19,7 +19,6 @@ import Footer from './components/Footer';
 import AboutMe from './components/About';
 import SearchResults from './components/Search/SearchResults';
 import Chat from './components/Chat';
-import Conversation from './components/Chat/Conversation';
 
 
 function App() {
@@ -74,10 +73,6 @@ function App() {
 
         <ProtectedRoute path='/messages' exact={true}>
           <Chat />
-        </ProtectedRoute>
-
-        <ProtectedRoute path='/conversations' exact={true}>
-          <Conversation />
         </ProtectedRoute>
 
         <Route path='/search' >

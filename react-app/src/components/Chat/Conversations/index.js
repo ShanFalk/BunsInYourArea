@@ -18,20 +18,25 @@ function Conversations() {
     }, [dispatch, sessionUser])
 
     const conversationValues = Object.values(conversationState);
+
     const conversations = conversationValues.map((conversation) => {
         if (conversation?.creator_id === sessionUser?.id) {
-            return conversation?.participant;
+            let participant = {};
+            participant[conversation.id] = conversation?.participant;
+            return participant;
         } else {
-            return conversation?.creator;
+            let participant = {};
+            participant[conversation.id] = conversation?.creator;
+            return participant;
         }
     })
-
+    console.log(conversations);
     return (
         <div>
             <div>
                 {conversations.map((conversation) => {
                     return (
-                        <Conversation key={conversation.id} conversation={conversation}/>
+                        <Conversation key={parseInt(Object.keys(conversation)[0])} conversation={conversation}/>
                     )
                 })}
             </div>

@@ -5,6 +5,10 @@
     padding: 6px;
     width: fit-content;
 }
+
+.button:disabled {
+    opacity: 0.5;
+}
 /* demo, logout button */
 .yellow {
     border: 2px solid #d2bf55;
@@ -23,7 +27,7 @@
     margin-top: 5px;
 }
 
-.blue:hover {
+.blue:hover:not([disabled]) {
     background-color: #0047ab;
     border: 2px solid #0047ab;
     cursor: pointer;

@@ -1,0 +1,45 @@
+.chat-grid {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.chat-grid-left {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid lightgray;
+}
+
+.chat-grid-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 21px;
+}
+
+.convo-container {
+    display: flex;
+}
+
+.chat-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.msg-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-container p {
+    margin: 0;
+}
+
+.message {
+    color: gray;
+}
+
+.cursor {
+    cursor: pointer;
+}

@@ -5,6 +5,10 @@ import bunnyReducer from './bunny';
 import reviewReducer from './review';
 import likesReducer from './like';
 import userReducer from './user';
+import conversationReducer from './conversation';
+import messageReducer from './message';
+import usersReducer from './users';
+
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +16,9 @@ const rootReducer = combineReducers({
   reviews: reviewReducer,
   likes: likesReducer,
   user: userReducer,
+  conversations: conversationReducer,
+  messages: messageReducer,
+  users: usersReducer,
 });
 
 

@@ -1,10 +1,12 @@
 const GET_USER = 'user/GET_USER';
 const REMOVE_USER = 'user/REMOVE_USER';
 
+
 const getOne = (user) => ({
     type: GET_USER,
     user
 });
+
 
 export const clearUser = () => ({
     type: REMOVE_USER

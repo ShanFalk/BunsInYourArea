@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { getUser } from '../../store/user';
 import LikesList from './Likes';
 import { clearUser } from '../../store/user';
+import CreateConversation from './CreateConversation';
 import './Profile.css'
 
 function Profile() {
@@ -42,6 +43,9 @@ function Profile() {
                 <p>{user?.city}, {user?.state}</p>
                 <p>{user?.biography}</p>
             </div>
+            {sessionUser?.id && sessionUser?.id !== parseInt(userId) && (
+                <CreateConversation sessionUser={sessionUser} user={user}/>
+            )}
             {sessionUser?.id === parseInt(userId) && (
                 <>
                     <button className='button blue add-bun' onClick={openModal}><i className="fa-solid fa-plus"></i>Add a Bunny</button>

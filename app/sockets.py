@@ -6,8 +6,8 @@ import os
 # Setting up Cross Origin Resource Sharing for both prod and dev
 if os.environ.get("FLASK_ENV") == "production":
     origins = [
-        "http://buns-in-your-area.herokuapp.com/",
-        "https://buns-in-your-area.herokuapp.com/"
+        "http://buns-in-your-area.herokuapp.com",
+        "https://buns-in-your-area.herokuapp.com"
     ]
 else:
     origins = "*"

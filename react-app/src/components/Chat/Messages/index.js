@@ -18,7 +18,6 @@ function Messages() {
 
     //control form input
     const [chatInput, setChatInput] = useState("");
-    console.log(chatInput.length)
     useEffect(() => {
         //on mount
         dispatch(getAllMessages(id));
@@ -33,6 +32,7 @@ function Messages() {
         //join the room after component mounts
         socket.on("connect", () => {
             socket.emit("join", { conversation: conversationId })
+            console.log('WE HAVE CONNECTED')
         })
         //listen for chat events
         socket.on("chat", (chat) => {
@@ -43,9 +43,10 @@ function Messages() {
         return () => {
             dispatch(clearMessages())
             socket.emit("leave", { conversation: conversationId })
+            console.log('WE HAVE LEFT')
             socket.disconnect()
         }
-    }, []);
+    }, [id]);
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
@@ -86,7 +87,7 @@ function Messages() {
                         maxLength="1000"
                         type="text"
                     />
-                    <button className="button blue plane" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button className="button blue plane" type="submit"><i className="fa-solid fa-paper-plane"></i></button>
                 </form>
             </div>
             <p className="max-length">*maximum message length 1000 characters</p>

@@ -8,7 +8,6 @@ function CreateConversation({sessionUser, user}) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [errors, setErrors] = useState([]);
-    console.log(errors)
     const onClick = async (e) => {
         e.preventDefault();
 
@@ -19,7 +18,6 @@ function CreateConversation({sessionUser, user}) {
 
         let createdConversation = await dispatch(createConversation(payload))
             .catch(async(data) => {
-                console.log(data)
             if (data && data.errors) setErrors(data.errors);
         });
 

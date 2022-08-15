@@ -12,7 +12,6 @@ function Messages() {
     const messageState = useSelector(state => Object.values(state.messages));
     const sessionUser = useSelector(state => state.session.user);
     const [tempMessages, setTempMessages] = useState([]);
-    console.log(tempMessages)
     const {conversationId} = useParams();
     const id = parseInt(conversationId);
     const dispatch = useDispatch();
@@ -39,7 +38,6 @@ function Messages() {
         socket.on("chat", (chat) => {
             //when we receive a chat, add it into our messages array in state
             setTempMessages(messages => [...messages, chat])
-            console.log(chat);
         });
         //when component unmounts, leave the room and disconnect
         return () => {

@@ -32,7 +32,6 @@ function Messages() {
         //join the room after component mounts
         socket.on("connect", () => {
             socket.emit("join", { conversation: conversationId })
-            console.log('WE HAVE CONNECTED')
         })
         //listen for chat events
         socket.on("chat", (chat) => {
@@ -43,7 +42,6 @@ function Messages() {
         return () => {
             dispatch(clearMessages())
             socket.emit("leave", { conversation: conversationId })
-            console.log('WE HAVE LEFT')
             socket.disconnect()
         }
     }, [id]);

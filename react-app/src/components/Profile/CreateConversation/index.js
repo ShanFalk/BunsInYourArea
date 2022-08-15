@@ -30,13 +30,13 @@ function CreateConversation({sessionUser, user}) {
 
 
     return (
-            <div>
+            <div className="user-details">
                 {errors.length > 0 && (
                     <div>
-                        <p>{errors}</p>
+                        <p className="required">{errors}</p>
                     </div>
                 )}
-                <button disabled={errors.length > 0} onClick={onClick}>Start a Conversation</button>
+                <button disabled={errors.length > 0} onClick={onClick} className="button blue"><i className="fa-solid fa-plus"></i>Start a Conversation</button>
             </div>
     )
 }

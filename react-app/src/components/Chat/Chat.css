@@ -1,6 +1,8 @@
 .chat-grid {
     display: grid;
     grid-template-columns: 25% 75%;
+    height: 60vh;
+    margin-top: 25px;
 }
 
 .chat-grid-left {
@@ -14,6 +16,13 @@
     flex-direction: column;
     justify-content: flex-end;
     margin: 21px;
+}
+
+.scroll-div {
+    overflow: scroll;
+    height: 60vh;
+    width: 80%;
+    padding-right: 10px;
 }
 
 .convo-container {
@@ -40,6 +49,27 @@
     color: gray;
 }
 
+.chat-div {
+/* background-color: white; */
+margin-top: 20px;
+}
+
+.hidden-input {
+    border: none;
+    height: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 5px lightgray;
+    border-radius: 4px;
+}
+
+.plane {
+    margin-left: 10px;
+}
+
 .cursor {
     cursor: pointer;
+}
+
+.max-length{
+    font-size: small;
 }

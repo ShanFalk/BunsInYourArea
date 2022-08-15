@@ -2,6 +2,7 @@ import React from 'react';
 import Conversations from './Conversations';
 import Messages from './Messages';
 import './Chat.css';
+import { Route } from 'react-router-dom';
 
 const Chat = () => {
 
@@ -15,7 +16,9 @@ const Chat = () => {
             {/* chat part of grid */}
             <div className='chat-grid-right'>
                 <div>
-                    <Messages />
+                    <Route path='/conversations/:conversationId'>
+                        <Messages />
+                    </Route>
                 </div>
             </div>
         </div>

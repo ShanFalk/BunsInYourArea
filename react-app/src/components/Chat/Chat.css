@@ -39,3 +39,7 @@
 .message {
     color: gray;
 }
+
+.cursor {
+    cursor: pointer;
+}

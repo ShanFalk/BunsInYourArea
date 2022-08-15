@@ -1,27 +1,30 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
+import { useParams, useLocation } from "react-router-dom";
 import { io } from 'socket.io-client';
-import {clearMessages} from '../../../store/message';
+import {clearMessages, getAllMessages} from '../../../store/message';
+
 
 //socket variable
 let socket;
 
 function Messages() {
-    const {isLoaded:isMessagesLoaded, ...messageState} = useSelector(state => state.messages)
+    const messageState = useSelector(state => Object.values(state.messages));
     const sessionUser = useSelector(state => state.session.user);
-    const [messages, setMessages] = useState([]);
+    const [tempMessages, setTempMessages] = useState([]);
+    console.log(tempMessages)
+    const {conversationId} = useParams();
+    const id = parseInt(conversationId);
     const dispatch = useDispatch();
 
     //control form input
     const [chatInput, setChatInput] = useState("");
 
-    const conversationId = messages[0]?.conversation_id;
-
     useEffect(() => {
-        if(isMessagesLoaded) {
-            setMessages(Object.values(messageState))
-        }
-    }, [isMessagesLoaded])
+        //on mount
+        dispatch(getAllMessages(id));
+
+    }, [id])
 
     useEffect(() => {
         //create websocket/connect
@@ -34,7 +37,7 @@ function Messages() {
         //listen for chat events
         socket.on("chat", (chat) => {
             //when we receive a chat, add it into our messages array in state
-            setMessages(messages => [...messages, chat])
+            setTempMessages(messages => [...messages, chat])
             console.log(chat);
         });
         //when component unmounts, leave the room and disconnect
@@ -57,15 +60,15 @@ function Messages() {
         setChatInput("");
     }
 
-    if(!isMessagesLoaded) {
-        return null;
-    }
+    // if(messageState.length === 0 && tempMessages.length === 0) {
+    //     return null;
+    // }
 
     return (
         <div>
-            {messages.map((message) => {
+            {[...messageState, ...tempMessages].map((message, idx) => {
                 return (
-                    <div key={message.id} className="convo-container">
+                    <div key={idx} className="convo-container">
                         <div>
                             <img src={message.sender.image_url} alt="user" className="chat-profile-pic"/>
                         </div>

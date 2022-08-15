@@ -22,15 +22,15 @@ export const getAllMessages = (id) => async (dispatch) => {
     }
 }
 
-const initialState = {isLoaded:false}
+const initialState = {}
 
 export default function messageReducer(state=initialState, action) {
     switch (action.type) {
         case GET_MESSAGES:
             const messages = action.messages;
-            return {...messages, isLoaded:true}
+            return {...messages}
         case REMOVE_MESSAGES:
-            return {isLoaded:false};
+            return {};
         default:
             return state
     }

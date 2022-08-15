@@ -71,7 +71,7 @@ function App() {
           <BunniesList />
         </Route>
 
-        <ProtectedRoute path='/messages' exact={true}>
+        <ProtectedRoute path='/conversations'>
           <Chat />
         </ProtectedRoute>
 

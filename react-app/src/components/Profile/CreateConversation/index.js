@@ -24,7 +24,7 @@ function CreateConversation({sessionUser, user}) {
         });
 
         if (createdConversation) {
-            history.push('/messages')
+            history.push('/conversations')
         }
     }
 

@@ -30,7 +30,6 @@ function Conversations() {
             return participant;
         }
     })
-    console.log(conversations);
     return (
         <div>
             <div>

@@ -34,7 +34,6 @@ function BunniesList() {
         return null;
     }
 
-    // console.log('HOME', {bunnies, isBunniesLoaded, sessionUser})
     return (
         <div>
             <h1>Bunnies near {sessionUser?.city}, {sessionUser?.state}</h1>

@@ -23,21 +23,17 @@ socketio = SocketIO(cors_allowed_origins=origins);
 #No return statement; data sent with emit or send functions
 @socketio.on("chat")
 def handle_chat(data):
-    room = data['recipient']
+    room = data['conversation']
     emit("chat", data, broadcast=True, to=room)
 
 #Event handler for 'join' events
-#Assigning each client to a room with their username
 @socketio.on("join")
 def on_join(data):
-    username = data['username']
-    room = data['username']
+    room = data['conversation']
     join_room(room)
-    send(username + ' has entered the room.', to=room)
 
+#Event handler for 'leave' events
 @socketio.on("leave")
 def on_leave(data):
-    username = data['username']
-    room = data['username']
+    room = data['conversation']
     leave_room(room)
-    send(username + ' has left the room.', to=room)

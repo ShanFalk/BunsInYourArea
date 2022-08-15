@@ -1,4 +1,9 @@
 const GET_MESSAGES = '/message/GET_MESSAGES';
+const REMOVE_MESSAGES = '/message/REMOVE_MESSAGES';
+
+export const clearMessages = () => ({
+    type: REMOVE_MESSAGES
+})
 
 const retrieveAll = (messages) => ({
     type: GET_MESSAGES,
@@ -24,6 +29,8 @@ export default function messageReducer(state=initialState, action) {
         case GET_MESSAGES:
             const messages = action.messages;
             return {...messages, isLoaded:true}
+        case REMOVE_MESSAGES:
+            return {isLoaded:false};
         default:
             return state
     }

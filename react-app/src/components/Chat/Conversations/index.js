@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getAllConversations } from "../../../store/conversation";
+import { getAllConversations, clearConversations } from "../../../store/conversation";
 import { useDispatch, useSelector } from 'react-redux';
 import Conversation from "./Conversation";
 import '../Chat.css';
@@ -14,6 +14,9 @@ function Conversations() {
     useEffect(() => {
         if (sessionUser.id) {
             dispatch(getAllConversations(sessionUser.id))
+        }
+        return () => {
+            dispatch(clearConversations())
         }
     }, [dispatch, sessionUser])
 

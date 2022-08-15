@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import { io } from 'socket.io-client';
+import {clearMessages} from '../../../store/message';
 
 //socket variable
 let socket;
@@ -9,6 +10,7 @@ function Messages() {
     const {isLoaded:isMessagesLoaded, ...messageState} = useSelector(state => state.messages)
     const sessionUser = useSelector(state => state.session.user);
     const [messages, setMessages] = useState([]);
+    const dispatch = useDispatch();
 
     //control form input
     const [chatInput, setChatInput] = useState("");
@@ -36,10 +38,11 @@ function Messages() {
             console.log(chat);
         });
         //when component unmounts, leave the room and disconnect
-        return (() => {
+        return () => {
+            dispatch(clearMessages())
             socket.emit("leave", {conversation: conversationId })
             socket.disconnect()
-        })
+        }
     }, []);
 
     const updateChatInput = (e) => {

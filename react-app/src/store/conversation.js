@@ -1,14 +1,14 @@
 const GET_CONVERSATIONS = '/conversation/GET_CONVERSATIONS';
-// const CREATE_CONVERSATION = '/conversation/CREATE_CONVERSATION';
+const REMOVE_CONVERSATIONS = '/conversation/REMOVE_CONVERSATIONS';
+
+export const clearConversations = () => ({
+    type: REMOVE_CONVERSATIONS
+})
 
 const retrieveAll = (conversations) => ({
     type: GET_CONVERSATIONS,
     conversations
 });
-
-// const createOne = (conversation) => ({
-
-// })
 
 export const createConversation = (payload) => async (dispatch) => {
     const response = await fetch('/api/conversations', {
@@ -52,6 +52,8 @@ export default function conversationReducer(state = initialState, action) {
         case GET_CONVERSATIONS:
             const conversations = action.conversations;
             return {...state, ...conversations}
+        case REMOVE_CONVERSATIONS:
+            return {}
         default:
             return state;
     }

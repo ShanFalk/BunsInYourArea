@@ -1,3 +1,4 @@
+from app.models import Message, db
 from flask_socketio import SocketIO, emit, join_room, leave_room, send
 # from flask import request
 import os
@@ -23,6 +24,14 @@ socketio = SocketIO(cors_allowed_origins=origins);
 #No return statement; data sent with emit or send functions
 @socketio.on("chat")
 def handle_chat(data):
+    message = Message(
+        content=data["content"],
+        sender_id=data["sender"]["id"],
+        conversation_id=data["conversation"]
+    )
+    db.session.add(message)
+    db.session.commit()
+
     room = data['conversation']
     emit("chat", data, broadcast=True, to=room)
 

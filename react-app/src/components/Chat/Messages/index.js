@@ -23,6 +23,7 @@ function Messages() {
     useEffect(() => {
         //on mount
         dispatch(getAllMessages(id));
+        setTempMessages([]);
 
     }, [id])
 
@@ -59,10 +60,6 @@ function Messages() {
         //clear the input field after the message is sent
         setChatInput("");
     }
-
-    // if(messageState.length === 0 && tempMessages.length === 0) {
-    //     return null;
-    // }
 
     return (
         <div>
